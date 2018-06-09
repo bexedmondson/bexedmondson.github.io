@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Home
+title: Posts
 ---
 
 {% for post in paginator.posts %}
