@@ -1,5 +1,5 @@
 ---
-layout: misc
+layout: home
 title: Home
 ---
 # Bex Edmondson - site under construction.
