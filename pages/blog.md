@@ -1,4 +1,4 @@
 ---
-layout: postlist
+layout: blogpostlist
 title: Blog
 ---
