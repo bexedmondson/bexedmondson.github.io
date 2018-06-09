@@ -5,6 +5,8 @@ disqus:
 
 google-ID: 'UA-112060364-2'
 
+timezone: Europe/London
+
 menu:
 - {name: 'Portfolio', folder: 'pages', file: 'portfolio.html'}
 - {name: 'Blog', folder: 'pages', file: 'blog.html'}
