@@ -8,7 +8,7 @@ layout: default
     </article>
 </div>
 
-{% for post in paginator.posts %}
+{% for post in site.posts %}
 
 <a href="{{ site.github.url }}{{ post.url }}">
     <div class="featured-posts" {% if post.image %}style="background-image:url({{ site.github.url }}/assets/img/{{ post.image }})"{% endif %}>
