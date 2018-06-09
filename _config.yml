@@ -14,8 +14,8 @@ sass:
   style: :nested
 
 # Customise atom feed settings (this is where Jekyll-Feed gets configuration information)
-title:		           "Millennial"
-description:	       "a Jekyll theme for running a blog or publication"
+title:		           "Bex Edmondson"
+description:	       "site under construction"
 author:              "Paul Le"
 
 # RSS 2.0 can be used instead of Atom by uncommenting following two lines
