@@ -2,7 +2,7 @@
 layout: post
 title: "Text Formatting"
 author: "Paul Le"
-categories: sample
+categories: game
 tags: [sample]
 image: arctic-1.jpg
 ---
