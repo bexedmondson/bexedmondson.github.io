@@ -27,14 +27,17 @@ h1 {
 h2 {
   margin-top: 1rem;
   font-size: 1.5rem;
+  font-family: $header-font-family;
 }
 h3 {
   margin-top: 1.5rem;
   font-size: 1.25rem;
+  font-family: $header-font-family;
 }
 h4, h5, h6 {
   margin-top: 1rem;
   font-size: 1rem;
+  font-family: $header-font-family;
 }
 
 /* Body */
@@ -120,3 +123,18 @@ blockquote {
      padding: 15px;
      text-align: left;
  }
+
+
+/*
+ Fonts
+ */
+
+ @font-face {
+  font-family: enriqueta-regular;
+  src: url("../fonts/enriqueta-regular.otf") format('opentype');
+}
+
+@font-face {
+  font-family: bold;
+  src: url("../fonts/moon.otf") format('opentype');
+}
