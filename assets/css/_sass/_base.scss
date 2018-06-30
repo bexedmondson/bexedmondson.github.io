@@ -16,13 +16,13 @@ dl, dd, ol, ul, figure {
 /* Headings */
 h1, h2, h3, h4, h5, h6 {
   margin-bottom: .5rem;
-  font-weight: bold;
   line-height: 1.25;
   text-rendering: optimizeLegibility;
 }
 
 h1 {
   font-size: 2rem;
+  font-weight: bold;
 }
 h2 {
   margin-top: 1rem;
@@ -137,5 +137,5 @@ blockquote {
 @font-face {
   font-family: moon;
   src: url("../../fonts/moon.otf") format('opentype');
-  font-weight: 100;
+  font-weight: lighter;
 }
