@@ -3,6 +3,7 @@ layout: post
 title: "Final year Project"
 author: "Bex Edmondson"
 categories: game
+tags: [game, personalproject]
 image: finalyearproject.png
 ---
 

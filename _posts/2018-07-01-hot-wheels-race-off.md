@@ -3,6 +3,7 @@ layout: post
 title: "Hot Wheels: Race Off"
 author: "Paul Le"
 categories: game
+tags: [game, hutch]
 image: hotwheels.png
 ---
 
