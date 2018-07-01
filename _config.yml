@@ -15,8 +15,8 @@ sass:
 
 # Customise atom feed settings (this is where Jekyll-Feed gets configuration information)
 title:		           "bex edmondson"
-description:	       "SITE UNDER CONSTRUCTION"
-author:              "CSS by Paul Le"
+description:	       "site under construction"
+author:              "css base by paul le"
 
 # RSS 2.0 can be used instead of Atom by uncommenting following two lines
 #feed:
