@@ -7,6 +7,7 @@ p, blockquote, pre, hr,
 dl, dd, ol, ul, figure {
   margin: 0;
   padding: 0;
+  background-color: $background-color;
 }
 
 /*
@@ -18,6 +19,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: .5rem;
   line-height: 1.25;
   text-rendering: optimizeLegibility;
+  color: $text-color;
 }
 
 h1 {
@@ -57,6 +59,7 @@ h5, h6 {
 body {
   font-family: $base-font-family;
   font-weight: 300;
+  color: $text-color;
 }
 body img {
     align: middle;
@@ -74,6 +77,7 @@ p {
   line-height: 1.65;
   font-family: $body-font-family;
   font-weight: 300;
+  color: $text-color;
 }
 
 /* Lists */
@@ -83,23 +87,28 @@ ul, ol, dl {
   margin-left: 1.5rem;
   font-family: $body-font-family;
   font-weight: 300;
+  color: $text-color;
 }
 
 ol li {
   margin-top: 1rem;
   margin-bottom: 1rem;
   margin-left: 1.5rem;
+  color: $text-color;
 }
 
 li {
   margin-bottom: 1rem;
+  color: $text-color;
 }
 
 dt {
   font-weight: bold;
+  color: $text-color;
 }
 dd {
   margin-bottom: .5rem;
+  color: $text-color;
 }
 
 /*
@@ -118,9 +127,8 @@ blockquote {
   margin: 10px 20px 10px;
   padding: 0px 15px;
   border-left: 0.25em solid #ccc;
-  color: #999;
+  color: rgb(209, 207, 207);
   line-height: 1.5;
-}
 
 /**
  * Tables
@@ -132,11 +140,12 @@ blockquote {
  }
 
  table, th, td {
-     border: 1px solid black;
+     border: 1px solid white;
  }
  th, td {
      padding: 15px;
      text-align: left;
+     color: $text-color;
  }
 
 
