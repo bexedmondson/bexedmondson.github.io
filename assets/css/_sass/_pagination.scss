@@ -6,13 +6,13 @@
   background-size: cover;
   position: relative;
 }
-.featured-posts h2 {
+.featured-posts h3 {
   bottom: 0;
   margin: 0;
   padding: 10px;
   position: absolute;
 }
-.featured-posts h2 span {
+.featured-posts h3 span {
    display: inline-block;
    color: white;
    font-family: $header-font-family;
@@ -24,7 +24,7 @@
 .featured-posts span a {
   color: white;
 }
-.featured-posts h1 {
+.featured-posts h2 {
   margin: 10px;
 }
 
