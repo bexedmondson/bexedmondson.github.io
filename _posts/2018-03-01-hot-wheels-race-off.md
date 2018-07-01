@@ -9,7 +9,7 @@ image: hotwheels.png
 
 #### [AVAILABLE FOR DOWNLOAD ON IOS HERE](https://itunes.apple.com/no/app/hot-wheels-race-off/id1141876504) 
 
-#### [AVAILABLE FOR DOWNLOAD ON ANDROID HERE]https://play.google.com/store/apps/details?id=com.hutchgames.hotwheels)
+#### [AVAILABLE FOR DOWNLOAD ON ANDROID HERE](https://play.google.com/store/apps/details?id=com.hutchgames.hotwheels)
 
 ## Game Description
 
