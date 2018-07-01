@@ -26,7 +26,6 @@ h1 {
   font-family: $site-title-font-family;
   font-weight: 700;
   letter-spacing: 0.05em;
-
 }
 h2 {
   font-size: 2rem;
@@ -103,7 +102,6 @@ dd {
 a {
   color: $brand-color;
   font-family: $body-font-family;
-  font-weight: 300;
 }
 
 /*
@@ -139,18 +137,6 @@ blockquote {
 /*
  Fonts
  */
-
-/*@font-face {
-  font-family: enriqueta-regular;
-  src: url("/assets/fonts/enriqueta-regular.otf") format('opentype');
-  font-weight: lighter;
-}
-
-@font-face {
-  font-family: 'Roboto Slab', serif;
-  font-weight: bold;
-  //src: url("/assets/fonts/enriqueta-bold.otf") format('opentype');
-}*/
 
 @font-face {
   font-family: moon;
