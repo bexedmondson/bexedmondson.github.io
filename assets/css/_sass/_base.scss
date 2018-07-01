@@ -23,13 +23,13 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
   font-size: 2rem;
   font-family: $header-font-family;
-  letter-spacing: 5em;
+  letter-spacing: 0.3em;
 }
 h2 {
   margin-top: 1rem;
   font-size: 1.5rem;
   font-family: $header-font-family;
-  letter-spacing: 5em;
+  letter-spacing: 0.3em;
   text-decoration: none;
 }
 h3 {
@@ -41,7 +41,7 @@ h4, h5, h6 {
   margin-top: 1rem;
   font-size: 1rem;
   font-family: $header-font-family;
-  letter-spacing: 5em;
+  letter-spacing: 0.3em;
 }
 
 /* Body */
