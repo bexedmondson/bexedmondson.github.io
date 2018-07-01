@@ -14,15 +14,15 @@
 }
 .featured-posts h3 span {
    display: inline-block;
-   color: white;
+   color: $background-color;
    font-family: $header-font-family;
    letter-spacing: 0.15em;
-   background: rgb(0, 0, 0); /* fallback color */
-   background: rgba(0, 0, 0, 0.7);
+   background: rgb(256, 256, 256); /* fallback color */
+   background: rgba(256, 256, 256, 0.7);
    padding: 10px;
 }
 .featured-posts span a {
-  color: white;
+  color: black;
 }
 .featured-posts h2 {
   margin: 10px;
@@ -49,7 +49,7 @@
   font-weight: bold;
 }
 .pagination-active {
-  color: black;
+  color: white;
 }
 .pagination-active:hover {
   background-color: #e0e0e0;
