@@ -10,7 +10,7 @@ find me on twitter at [@bexmakesgames](https://twitter.com/bexmakesgames)
 
 or on instagram at [@bexmakesgames](https://www.instagram.com/bexmakesgames/)
 
-my github is [here](https://github.com/bexedmondson) (though it doesn't contain all my code - I use several source control systems)
+my github is [here](https://github.com/bexedmondson)
 
 <br/>
 
