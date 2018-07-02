@@ -64,12 +64,11 @@
       font-size: 16px;
       border: none;
       cursor: pointer;
-      float: right;
   }
   .dropdown {
       position: relative;
       display: inline-block;
-      align-self: right;
+      float: right;
   }
   .dropdown-content {
       display: none;
