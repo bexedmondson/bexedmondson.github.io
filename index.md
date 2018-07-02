@@ -2,9 +2,13 @@
 layout: home
 title: Home
 ---
-# bex edmondson - site under construction.
+## Welcome
 
-**Please hold while I fix this site :) I'm no web developer and I'm learning as I go! If you need me for something in the meantime, please reach out to me at @bexmakesgames on Twitter.**
+I'm Bex, a client-side developer at Hutch in London, UK, and I've been helping make racing games in a small agile team since 2016. 
+
+You can find more about my work [here](portfolio.html), you can find my blog [here](blog.html), and you can find out a bit more about me [here](about.html). If you'd like to get ahold of me, my social media links are in the top left, or you can go [here](contact.html) for further information.
+
+Otherwise, below you can find my latest blog posts and portfolio updates. Thanks for visiting!
 
 <br/>
 
