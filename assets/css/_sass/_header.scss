@@ -65,24 +65,6 @@
       border: none;
       cursor: pointer;
   }
-  .dropbtn:hover {
-    background-color: $brand-color;
-    color: white;
-    padding: 16px;
-    margin-top: 4px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-  }
-  .dropbtn:active {
-    background-color: $brand-color;
-    color: white;
-    padding: 16px;
-    margin-top: 4px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-  }
   .dropdown {
       position: relative;
       display: inline-block;
@@ -110,5 +92,6 @@
   }
   .dropdown:hover .dropbtn {
       background-color: $brand-color;
+      color: white;
   }
 }
