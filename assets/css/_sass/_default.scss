@@ -4,6 +4,7 @@
 
 .container {
   width: 100vw;
+  max-width: $container-width;
   margin-left: auto;
   margin-right: auto;
   background-color: $background-color;
@@ -16,6 +17,7 @@
   margin: auto;
   display: block;
   width: 95vw;
+  max-width: $container-width;
 }
 .posts-wrapper h2 {
   margin: 20px 0px 5px;
