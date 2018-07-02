@@ -3,10 +3,10 @@
 */
 
 .container {
-  width: $container-width;
+  width: 100vw;
   margin-left: auto;
   margin-right: auto;
-  backgroundcolor: $background-color;
+  background-color: $background-color;
 }
 .container a {
   text-decoration: underline;
