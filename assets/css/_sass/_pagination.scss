@@ -18,11 +18,11 @@
    font-family: $header-font-family;
    letter-spacing: 0.15em;
    background: rgb(256, 256, 256); /* fallback color */
-   background: rgba(256, 256, 256, 0.7);
+   //background: rgba(256, 256, 256, 0.7);
    padding: 10px;
 }
 .featured-posts span a {
-  color: black;
+  color: $brand-color;
 }
 .featured-posts h2 {
   margin: 10px;
