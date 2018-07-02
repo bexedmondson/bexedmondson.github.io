@@ -14,11 +14,11 @@
 }
 .featured-posts h3 span {
    display: inline-block;
-   color: $brand-color;;
+   color: $brand-color;
    font-family: $header-font-family;
    letter-spacing: 0.15em;
-   background: rgb(256, 256, 256); /* fallback color */
-   //background: rgba(256, 256, 256, 0.7);
+   background: rgb(51, 51, 51); /* fallback color */
+   background: rgba(51, 51, 51, 0.7);
    padding: 10px;
 }
 .featured-posts span a {
