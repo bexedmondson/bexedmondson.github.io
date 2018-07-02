@@ -120,6 +120,11 @@
 }
 @media (max-width: $tablet-width) {
   .related-thumbnail{
-    width: 95vw;
+    width: 80vw;
+  }
+}
+@media (max-width: $tablet-width) {
+  .related-thumbnail{
+    width: 80vw;
   }
 }
