@@ -4,7 +4,7 @@ title: "Hot Wheels: Race Off"
 author: "Bex Edmondson"
 categories: game
 tags: [game, hutch]
-image: hotwheels.png
+image: hotwheelsgradient.png
 ---
 
 #### [AVAILABLE FOR DOWNLOAD ON IOS HERE](https://itunes.apple.com/no/app/hot-wheels-race-off/id1141876504) 

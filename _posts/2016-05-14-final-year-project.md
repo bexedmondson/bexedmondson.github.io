@@ -4,7 +4,7 @@ title: "Final year Project"
 author: "Bex Edmondson"
 categories: game
 tags: [game, personalproject]
-image: finalyearproject.png
+image: finalyearprojectgradient.png
 ---
 
 #### [WATCH GAMEPLAY VIDEO HERE](https://www.youtube.com/watch?v=t5m0qVqrePU)
