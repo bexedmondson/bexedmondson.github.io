@@ -66,6 +66,7 @@
       cursor: pointer;
   }
   .dropbtn:hover {
+    background-color: $brand-color;
     color: white;
     padding: 16px;
     margin-top: 4px;
