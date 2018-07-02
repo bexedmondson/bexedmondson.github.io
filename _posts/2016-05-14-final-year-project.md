@@ -5,6 +5,7 @@ author: "Bex Edmondson"
 categories: game
 tags: [game, personalproject]
 image: finalyearprojectgradient.png
+colorimage: finalyearproject.png
 ---
 
 #### [WATCH GAMEPLAY VIDEO HERE](https://www.youtube.com/watch?v=t5m0qVqrePU)
