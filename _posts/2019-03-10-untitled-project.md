@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "Untitled Porject"
+title: "Untitled Project"
 author: "Bex Edmondson"
 categories: game
 tags: [game]
-image: soongradient
-colorimage: soon
+image: soongradient.jpg
+colorimage: soon.jpg
 ---
 
 #### [AVAILABLE FOR VIEWING HERE](https://github.com/bexedmondson/teashop) 
