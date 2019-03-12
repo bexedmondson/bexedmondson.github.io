@@ -4,8 +4,8 @@ title: "Top Drives"
 author: "Bex Edmondson"
 categories: game
 tags: [game, hutch]
-image: topdrivesgradient.jpg
-colorimage: topdrives.jpg
+image: topdrivesgradient.png
+colorimage: topdrives.png
 ---
 
 #### [AVAILABLE FOR DOWNLOAD HERE](http://onelink.to/3tu4kw) 
