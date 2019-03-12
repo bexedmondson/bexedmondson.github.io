@@ -4,8 +4,8 @@ title: "Untitled Project"
 author: "Bex Edmondson"
 categories: game
 tags: [game]
-image: soongradient.jpg
-colorimage: soon.jpg
+image: soongradient.png
+colorimage: soon.png
 ---
 
 #### [AVAILABLE FOR VIEWING HERE](https://github.com/bexedmondson/teashop) 
