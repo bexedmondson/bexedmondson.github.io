@@ -16,4 +16,5 @@ This yet-to-be-released, untitled game is a personal project with [Anna Hollinra
 
 ## What I Did
 
-I made a quick proof of concept to make sure it was a viable project, and now we're developing it into a proper MVP to show to a couple of people. I'm currently building up the basic architecture and game loop, and making debug features as I go. I've done some interesting experiments in architecture, as I've got complete creative control unlike the projects at work: I'm hoping that soon I'll be in a place where I can write some blog posts about the way my state machine works.
+I hacked together a quick proof of concept to make sure it was a viable project, and now we're developing it into a proper MVP to show to a couple of people. I'm currently building up the basic architecture and game loop, and making debug features as I go including custom editors so that Anna, who's an artist, can create and fix content without delving into the codebase. 
+I've done some interesting experiments in architecture, as I've got complete creative control unlike the projects at work: I'm hoping that soon I'll be in a place where I can write some blog posts about the way my state machine works.
