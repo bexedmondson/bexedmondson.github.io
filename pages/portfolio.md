@@ -1,4 +1,0 @@
----
-layout: gamelist
-title: Portfolio
----
