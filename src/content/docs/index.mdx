@@ -3,35 +3,30 @@ title: welcome
 description: bex edmondson
 template: splash
 hero:
-  tagline: game developer. london.
+  tagline: bex 🞗 game developer 🞗 london
   image:
-    file: ../../assets/houston.webp
-  actions:
-    - text: see what's happening
-      link: /guides/example/
-      icon: right-arrow
-      variant: secondary
-    - text: see what's next
-      link: https://github.com/bexedmondson
-      icon: github
-      variant: minimal
+    file: ../../assets/bexprofileposterised.png
+  #actions:
+   # - text: see what's happening
+    #  link: /guides/example/
+     # icon: right-arrow
+      #variant: secondary
+    #- text: see what's next
+     # link: https://github.com/bexedmondson
+      #icon: github
+      #variant: minimal
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
-
-## Next steps
+import { CardGrid } from '@astrojs/starlight/components';
+import LinkIconCard from './src/components/LinkIconCard.astro';
 
 <CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
-	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
-	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
-	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
-	</Card>
+	<LinkIconCard title="Games" icon="puzzle" href="/games/example">
+	</LinkIconCard>
+	<LinkIconCard title="About" icon="information" href="/games/example">
+	</LinkIconCard>
+	<LinkIconCard title="Projects" icon="laptop">
+	</LinkIconCard>
+	<LinkIconCard title="Blog" icon="document">
+	</LinkIconCard> 
 </CardGrid>

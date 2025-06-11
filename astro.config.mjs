@@ -9,6 +9,11 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'bex edmondson',
+			logo: { 
+				light: './src/assets/glasses-lightmode.svg',
+				dark: './src/assets/glasses-darkmode.svg',
+			},
+			favicon: '/light-mode-favicon.png', //TODO figure this out
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/bexedmondson' }],
 			sidebar: [
 				{
@@ -29,6 +34,11 @@ export default defineConfig({
 					light: { flavor: "latte", accent: "sapphire" },
 				}),
 			],
+			components: {
+				Head: './src/components/Head.astro',
+				Hero: './src/components/Hero.astro',
+				LinkIconCard: './src/components/LinkIconCard.astro',
+			},
 			customCss: [
 				'./src/styles/custom.css',
 				'@fontsource/enriqueta/400.css',
