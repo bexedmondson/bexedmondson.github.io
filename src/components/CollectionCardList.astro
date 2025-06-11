@@ -9,8 +9,7 @@ const posts = await getCollection(collectionName);
 
 <CardGrid stagger={shouldStagger}>
 	{
-        posts.sort((a,b) => b.id.localeCompare(a.id));
-		posts.map((post) => {
+        posts.sort((a,b) => b.id.localeCompare(a.id)).map((post) => {
             return (
                 <LinkIconCard title={post.data.title} icon="puzzle" href={post.filePath}></LinkIconCard>
             )
