@@ -40,7 +40,7 @@ Using the boids algorithm was probably the most successful part of the game. Alt
 
 ## Particle Swarm Optimisation
 
-Unfortunately, not everything went so smoothly. Though I was able to implement PSO fairly quickly, I found that it produced really unnatural movement: in fact, every single playtester identified the agents' movement as a bug, despite it being expected behaviour! In the future, I'm planning on either removing the swarm component entirely, leaving each agent as a hill-climber, or modifying the algorithm to use neighbourhod-based PSO. This latter option might be the best, as the agents have to find more than one hilltop in the landscape, rather than one highest hill, which is what vanilla PSO is best at.
+Unfortunately, not everything went so smoothly. Though I was able to implement PSO fairly quickly, I found that it produced really unnatural movement: in fact, every single playtester identified the agents' movement as a bug, despite it being expected behaviour! In the future, I'm planning on either removing the swarm component entirely, leaving each agent as a hill-climber, or modifying the algorithm to use neighbourhood-based PSO. This latter option might be the best, as the agents have to find more than one hilltop in the landscape, rather than one highest hill, which is what vanilla PSO is best at.
 
 ## Future development
 
@@ -48,4 +48,4 @@ I have so many ideas for how to continue this game if I ever get time! The major
 
 ## Finally
 
-I'm really glad to have finally made a complete game from beginning to end. Using swarm intellignece has actually only made me more interested in it, and I have a few non-game-realted coding ideas bouncing around in my brain at the moment. First though, I'm going to polish this game so that it can, at my lecturers' request, be used as a project example at my university's open days!
+I'm really glad to have finally made a complete game from beginning to end. Using swarm intelligence has actually only made me more interested in it, and I have a few non-game-related coding ideas bouncing around in my brain at the moment. First though, I'm going to polish this game so that it can, at my lecturers' request, be used as a project example at my university's open days!

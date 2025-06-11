@@ -10,11 +10,14 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.4.1",
     "@astrojs/starlight": "^0.34.3",
     "@catppuccin/starlight": "^1.0.1",
     "@fontsource/enriqueta": "^5.2.6",
     "astro": "^5.6.1",
     "sharp": "^0.32.5",
-    "starlight-auto-sidebar": "^0.1.2"
+    "starlight-auto-sidebar": "^0.1.2",
+    "starlight-blog": "^0.24.0",
+    "starlight-fullview-mode": "^0.2.3"
   }
 }
