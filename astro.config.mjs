@@ -19,6 +19,7 @@ export default defineConfig({
 			sidebar: [
 				{
 					label: 'games',
+					//slug: 'games',
 					autogenerate: { directory: 'games' },
 					badge: 'Outdated'
 				},
