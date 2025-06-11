@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import catppuccin from "@catppuccin/starlight";
+import starlightAutoSidebar from 'starlight-auto-sidebar'
 
 // https://astro.build/config
 export default defineConfig({
@@ -18,21 +19,28 @@ export default defineConfig({
 			sidebar: [
 				{
 					label: 'games',
-					items: [
-						// Each item here is one entry in the navigation menu.
-						{ label: 'Example Game', slug: 'games/example' },
-					],
+					autogenerate: { directory: 'games' },
+					badge: 'Outdated'
 				},
 				{
 					label: 'blog',
 					autogenerate: { directory: 'blog' },
 				},
+				{
+					label: 'about',
+					slug: 'about'
+				},
+				{
+					label: 'contact',
+					slug: 'contact'
+				}
 			],
 			plugins: [
 				catppuccin({
 					dark: { flavor: "mocha", accent: "sapphire" },
 					light: { flavor: "latte", accent: "sapphire" },
 				}),
+				starlightAutoSidebar(),
 			],
 			components: {
 				Head: './src/components/Head.astro',
