@@ -17,17 +17,23 @@ export default defineConfig({
                 dark: './src/assets/glasses-darkmode.svg',
             },
             favicon: '/light-mode-favicon.png', //TODO figure this out
+            tableOfContents: false,
             social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/bexedmondson' }],
             sidebar: [
                 {
                     label: 'games',
-                    //slug: 'games',
                     autogenerate: { directory: 'games' },
                     badge: 'Outdated'
                 },
                 {
+                    label: 'projects',
+                    autogenerate: { directory: 'projects' },
+                    badge: 'Coming Soon'
+                },
+                {
                     label: 'blog',
                     autogenerate: { directory: 'blog' },
+                    badge: 'Coming Soon'
                 },
                 {
                     label: 'about',
@@ -53,6 +59,7 @@ export default defineConfig({
                 Head: './src/components/Head.astro',
                 Hero: './src/components/Hero.astro',
                 LinkIconCard: './src/components/LinkIconCard.astro',
+                Footer: './src/components/Footer.astro',
             },
             customCss: [
                 './src/styles/custom.css',
