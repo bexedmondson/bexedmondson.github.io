@@ -5,11 +5,11 @@ import LinkIconCard from './LinkIconCard.astro';
 
 const { collectionName, shouldStagger } = Astro.props;
 const posts = await getCollection(collectionName);
-posts.sort((a,b) => b.id.localeCompare(a.id));
 ---
 
 <CardGrid stagger={shouldStagger}>
 	{
+        posts.sort((a,b) => b.id.localeCompare(a.id));
 		posts.map((post) => {
             return (
                 <LinkIconCard title={post.data.title} icon="puzzle" href={post.filePath}></LinkIconCard>
