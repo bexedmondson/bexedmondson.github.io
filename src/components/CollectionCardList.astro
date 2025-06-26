@@ -11,7 +11,7 @@ const posts = await getCollection(collectionName);
 	{
         posts.sort((a,b) => b.id.localeCompare(a.id)).map((post) => {
             return (
-                <LinkIconCard title={post.data.title} icon="puzzle" href={collectionName + "/" + post.id}></LinkIconCard>
+                <LinkIconCard title={post.data.title} icon="puzzle" href={post.id}></LinkIconCard>
             )
 		})
 	}
