@@ -2,7 +2,6 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import catppuccin from "@catppuccin/starlight";
-import starlightAutoSidebar from 'starlight-auto-sidebar';
 import sitemap from '@astrojs/sitemap';
 import starlightFullViewMode from 'starlight-fullview-mode';
 import starlightBlog from 'starlight-blog';
@@ -48,7 +47,6 @@ export default defineConfig({
                     dark: { flavor: "mocha", accent: "sapphire" },
                     light: { flavor: "latte", accent: "sapphire" },
                 }),
-                starlightAutoSidebar(),
                 starlightFullViewMode({ 
                     leftSidebarEnabled: false,  
                     rightSidebarEnabled: true,
