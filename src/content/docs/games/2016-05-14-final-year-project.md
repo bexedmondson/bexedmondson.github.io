@@ -4,13 +4,19 @@ title: "Final Year Project"
 author: "Bex Edmondson"
 categories: game
 tags: [game, personalproject]
-image: finalyearprojectgradient.png
-colorimage: finalyearproject.png
+hero:
+  image: 
+    file: finalyearprojectgradient.png
+  actions:
+   - text: watch gameplay video
+     link: https://www.youtube.com/watch?v=t5m0qVqrePU
+     icon: youtube
+   - text: download here
+     link: https://drive.google.com/folderview?id=0B5MItPVnQZsEV3ptdHVGX2xwdms&usp=sharing
+     icon: external
 ---
 
-#### [WATCH GAMEPLAY VIDEO HERE](https://www.youtube.com/watch?v=t5m0qVqrePU)
-
-#### [AVAILABLE FOR DOWNLOAD HERE](https://drive.google.com/folderview?id=0B5MItPVnQZsEV3ptdHVGX2xwdms&usp=sharing) 
+&nbsp;
 
 Over the last year of my degree, I built a game as part of my final year project. It's a single-player game based around finding goals in a landscape, using swarm intelligence and simulation. The player pilots a small flock of paper aeroplanes (which are controlled using the [boids algorithm](http://www.red3d.com/cwr/boids/)) towards small goals on the top of hills, with the aim of capturing as many as possoble before the time runs out. 
 

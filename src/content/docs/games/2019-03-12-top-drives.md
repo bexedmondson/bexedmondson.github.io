@@ -4,11 +4,16 @@ title: "Top Drives"
 author: "Bex Edmondson"
 categories: game
 tags: [game, hutch]
-image: topdrivesgradient.png
-colorimage: topdrives.png
+hero:
+  image: 
+    file: topdrivesgradient.png
+  actions:
+   - text: download here
+     link: http://onelink.to/3tu4kw
+     icon: external
 ---
 
-#### [AVAILABLE FOR DOWNLOAD HERE](http://onelink.to/3tu4kw) 
+&nbsp;
 
 ## Game Description
 
@@ -37,6 +42,6 @@ Get an edge by fusing your cars and push your hot wheels to the limit. Become dr
 
 So, buckle up, stop dreaming and start driving. Download Top Drives today and let them eat your dust. 
 
-## What I Did
+## My Contributions
 
 I was part of the client-side development team for this 50000+ DAU project as with other Hutch projects, mostly responsible for feature implementation and bug fixing. I also have assisted server-side with bug fixing when necessary. My most notable contribution to date has been working with two other client-side developers to release the Clubs feature, the largest update to Top Drives yet.
