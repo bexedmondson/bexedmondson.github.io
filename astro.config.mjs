@@ -22,18 +22,12 @@ export default defineConfig({
             sidebar: [
                 {
                     label: 'games',
-                    autogenerate: { directory: 'games' },
-                    badge: 'Outdated'
-                },
-                {
-                    label: 'projects',
-                    autogenerate: { directory: 'projects' },
-                    badge: 'Coming Soon'
+                    autogenerate: { directory: 'games' }
                 },
                 {
                     label: 'blog',
                     autogenerate: { directory: 'blog' },
-                    badge: 'Coming Soon'
+                    badge: 'WIP'
                 },
                 {
                     label: 'about',
@@ -56,6 +50,7 @@ export default defineConfig({
                 }),
             ],
             components: {
+                404: './src/components/404.astro',
                 Head: './src/components/Head.astro',
                 Hero: './src/components/Hero.astro',
                 CollectionCardList: './src/components/CollectionCardList.astro',
