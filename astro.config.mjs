@@ -54,14 +54,15 @@ export default defineConfig({
                     rightSidebarEnabled: true,
                 }),
                 starlightBlog({
+                    navigation: 'none',
                     prevNextLinksOrder: 'chronological'
                 })
             ],
             components: {
                 Head: './src/components/Head.astro',
                 Hero: './src/components/Hero.astro',
-                CollectionCardList: './src/components/CollectionCardList.astro',
-                LinkIconCard: './src/components/LinkIconCard.astro',
+                //CollectionCardList: './src/components/CollectionCardList.astro',
+                //LinkIconCard: './src/components/LinkIconCard.astro',
                 Footer: './src/components/Footer.astro',
             },
             customCss: [
