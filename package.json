@@ -15,6 +15,7 @@
     "@catppuccin/starlight": "^1.0.1",
     "@fontsource/enriqueta": "^5.2.6",
     "astro": "^5.6.1",
+    "patch-package": "^8.0.0",
     "sharp": "^0.32.5",
     "starlight-auto-sidebar": "^0.1.2",
     "starlight-blog": "^0.24.0",
