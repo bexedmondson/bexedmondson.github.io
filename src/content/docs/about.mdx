@@ -3,9 +3,10 @@ title: about
 description: about me
 ---
 
+import { Image } from 'astro:assets';
 import selfie from './bexselfie.png';
 
-<img src={selfie.src} width="250" height="250" style="display: block; padding: 30px; margin: 0 auto" alt="A mirror selfie of Bex with bright pink hair wearing a black leather jacket, looking at the camera, against a blank background." />
+<Image src={selfie} width="250" height="250" style="display: block; padding: 30px; margin: 0 auto" alt="A mirror selfie of Bex with bright pink hair wearing a black leather jacket, looking at the camera, against a blank background." />
 
 Hi! I’m a client-side generalist game developer in London. I've worked in small teams at Trailmix and Hutch making casual merge-2 and racing games. Most recently, I spent 6 years building the awarding-winning Love and Pies from prototype to production, live ops, and beyond. I've also worked on Top Drives, Hill Dash 2 and Hot Wheels: Race Off. I graduated from the University of Exeter in 2016 with a BSc Computer Science and Maths degree.
 
