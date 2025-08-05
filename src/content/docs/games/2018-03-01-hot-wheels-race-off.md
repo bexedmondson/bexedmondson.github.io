@@ -2,7 +2,6 @@
 layout: post
 title: "Hot Wheels: Race Off"
 author: "Bex Edmondson"
-categories: game
 tags: [game, hutch]
 hero:
   tagline: "2018"

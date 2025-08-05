@@ -2,7 +2,6 @@
 layout: post
 title: "Top Drives"
 author: "Bex Edmondson"
-categories: game
 tags: [game, hutch]
 hero:
   image: 

@@ -2,7 +2,6 @@
 layout: post
 title: "Final Year Project"
 author: "Bex Edmondson"
-categories: game
 tags: [game, personalproject]
 hero:
   image: 
