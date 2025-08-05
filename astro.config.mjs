@@ -24,15 +24,15 @@ export default defineConfig({
                     label: 'games',
                     autogenerate: { directory: 'games' }
                 },
-                {
+                /*{
                     label: 'blog',
                     autogenerate: { directory: 'blog' },
                     badge: 'WIP'
-                },
-                {
+                },*/
+                /*{
                     label: 'tags',
                     autogenerate: { directory: 'tags' }
-                },
+                },*/
                 {
                     label: 'about',
                     slug: 'about'
@@ -52,7 +52,7 @@ export default defineConfig({
                     rightSidebarEnabled: true,
                 }),
                 starlightBlog({
-                    navigation: 'none',
+                    navigation: 'sidebar',
                     prevNextLinksOrder: 'chronological'
                 })
             ],
