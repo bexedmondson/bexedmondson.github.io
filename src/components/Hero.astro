@@ -31,11 +31,11 @@ if (image) {
 <div class="hero">
     {
         darkImage && (
-                    <Image
-                            src={darkImage}
-                            {...imageAttrs}
-                            class:list={{ 'light:sl-hidden': Boolean(lightImage) }}
-                    />
+            <Image
+                    src={darkImage}
+                    {...imageAttrs}
+                    class:list={{ 'light:sl-hidden': Boolean(lightImage) }}
+            />
         )
     }
     {lightImage && <Image src={lightImage} {...imageAttrs} class="dark:sl-hidden" />}
