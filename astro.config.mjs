@@ -4,7 +4,8 @@ import starlight from '@astrojs/starlight';
 import catppuccin from "@catppuccin/starlight";
 import starlightAutoSidebar from 'starlight-auto-sidebar';
 import sitemap from '@astrojs/sitemap';
-import starlightFullViewMode from 'starlight-fullview-mode'
+import starlightFullViewMode from 'starlight-fullview-mode';
+import starlightBlog from 'starlight-blog';
 
 // https://astro.build/config
 export default defineConfig({
@@ -30,6 +31,10 @@ export default defineConfig({
                     badge: 'WIP'
                 },
                 {
+                    label: 'tags',
+                    autogenerate: { directory: 'tags' }
+                },
+                {
                     label: 'about',
                     slug: 'about'
                 },
@@ -48,9 +53,11 @@ export default defineConfig({
                     leftSidebarEnabled: false,  
                     rightSidebarEnabled: true,
                 }),
+                starlightBlog({
+                    prevNextLinksOrder: 'chronological'
+                })
             ],
             components: {
-                404: './src/components/404.astro',
                 Head: './src/components/Head.astro',
                 Hero: './src/components/Hero.astro',
                 CollectionCardList: './src/components/CollectionCardList.astro',
