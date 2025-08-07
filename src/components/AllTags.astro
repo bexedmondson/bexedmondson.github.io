@@ -18,23 +18,68 @@ interface TagDetail {
     count : number;
 }
 
-const entriesArray : Array<TagDetail> = []
+const allTags : Array<TagDetail> = []
 
 entryTags.entries().forEach((entry) => {
-    entriesArray.push({
+    allTags.push({
         path: entry[0],
         label: entry[1].label,
         count: entry[1].entries
     })
 })
 
-entriesArray.sort((a, b) => a.label.localeCompare(b.label))
+allTags.sort((a, b) => a.label.localeCompare(b.label))
+
+const allTagsCountSort = allTags.toSorted((a, b) => b.count - a.count)
+
 ---
 
-<ul>
+sort by: <astro-toggle data-entries={allTags}><a id="countLink">count</a><b id="countBold" style="display: none">count</b>  <a id="alphaLink" style="display: none">name</a><b id="alphaBold">name</b></astro-toggle>
+
+<ul id="countSorted" style="display: none">
     {
-        entriesArray.map((entry) => { 
+        allTagsCountSort.map((entry) => { 
             return (<li><a href={entry.path}>{entry.label} ({entry.count})</a></li>)
         })
     }
 </ul>
+
+<ul id="alphaSorted">
+    {
+        allTags.map((entry) => {
+            return (<li><a href={entry.path}>{entry.label} ({entry.count})</a></li>)
+        })
+    }
+</ul>
+
+<script>
+    let toggleCount = false;
+    class Toggle extends HTMLElement {
+        connectedCallback() {
+            const countLink = document.getElementById("countLink");
+            const alphaLink = document.getElementById("alphaLink");
+            const countBold = document.getElementById("countBold");
+            const alphaBold = document.getElementById("alphaBold");
+            const countList = document.getElementById("countSorted");
+            const alphaList = document.getElementById("alphaSorted");
+            
+            const updateToggles = () => {
+                toggleCount = !toggleCount;
+                
+                countLink.style.display = toggleCount ? 'none' : 'inline';
+                alphaLink.style.display = toggleCount ? 'inline' : 'none';
+                countBold.style.display = toggleCount ? 'inline' : 'none';
+                alphaBold.style.display = toggleCount ? 'none' : 'inline';
+                countList.style.display = toggleCount ? 'block' : 'none';
+                alphaList.style.display = toggleCount ? 'none' : 'block';
+            }
+            
+            updateToggles()
+            
+            countLink.addEventListener('click', () => { updateToggles() });
+            alphaLink.addEventListener('click', () => { updateToggles() });
+        }
+    }
+
+    customElements.define('astro-toggle', Toggle);
+</script>
