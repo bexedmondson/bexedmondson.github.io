@@ -111,10 +111,10 @@ index 21f8ccf..10e829b 100644
      },
      props: {
 diff --git a/node_modules/starlight-blog/middleware.ts b/node_modules/starlight-blog/middleware.ts
-index fab7820..d483822 100644
+index fab7820..3d6a294 100644
 --- a/node_modules/starlight-blog/middleware.ts
 +++ b/node_modules/starlight-blog/middleware.ts
-@@ -1,207 +1,212 @@
+@@ -1,207 +1,214 @@
 -import { defineRouteMiddleware, type StarlightRouteData } from '@astrojs/starlight/route-data'
 -import type { APIContext, AstroBuiltinAttributes } from 'astro'
 -import type { HTMLAttributes } from 'astro/types'
@@ -407,7 +407,7 @@ index fab7820..d483822 100644
 -    sidebar.push(makeSidebarLink(t('starlightBlog.sidebar.rss'), getRelativeBlogUrl('/rss.xml', locale, true), false))
 -  }
 +    if (tags.size > 0) {
-+        const tagEntries = [...tags].sort(
++        let tagEntries = [...tags].sort(
 +            ([, a], [, b]) => {
 +                if (a.entries.length === b.entries.length) {
 +                    return a.label.localeCompare(b.label)
@@ -416,17 +416,19 @@ index fab7820..d483822 100644
 -  return sidebar
 +                return b.entries.length - a.entries.length
 +            }
-+        ).map(
-+            ([tagSlug, {entries, label}]) =>
-+                makeSidebarLink(
-+                    `${label} (${entries.length})`,
-+                    getRelativeUrl(
-+                        getPathWithLocale(`/tags/${tagSlug}`, locale),
-+                        false
-+                    ),
-+                    isBlogTagPage(id, tagSlug),
++        ).map(([tagSlug, {entries, label}]) =>
++            makeSidebarLink(
++                `${label} (${entries.length})`,
++                getRelativeUrl(
++                    getPathWithLocale(`/tags/${tagSlug}`, locale),
++                    false
 +                ),
++                isBlogTagPage(id, tagSlug),
++            )
 +        )
++        
++        if (tagEntries.length > 5)
++            tagEntries = tagEntries.slice(0, 5)
 +  
 +        tagEntries.unshift(
 +            makeSidebarLink('All Tags',
