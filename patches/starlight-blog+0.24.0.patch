@@ -88,19 +88,15 @@ index 2fbbecc..02b9f26 100644
  }
  
  export function isNavigationWithCustomCss(config: StarlightBlogConfig) {
-diff --git a/node_modules/starlight-blog/libs/page.ts b/node_modules/starlight-blog/libs/page.ts
-index d18f74b..cb7ff79 100644
---- a/node_modules/starlight-blog/libs/page.ts
-+++ b/node_modules/starlight-blog/libs/page.ts
-@@ -71,7 +71,7 @@ export function isBlogPostPage(slug: string, postSlug: string) {
- }
- 
- export function isBlogTagPage(slug: string, tag: string) {
--  return slug === `${getPathWithLocale(config.prefix, getLocaleFromPath(slug))}/tags/${tag}`
-+  return slug === `${getPathWithLocale('', getLocaleFromPath(slug))}/tags/${tag}`
- }
- 
- export function isBlogAuthorPage(slug: string, author: string) {
+diff --git a/node_modules/starlight-blog/libs/path.ts b/node_modules/starlight-blog/libs/path.ts
+index 9bbe86c..70c8839 100644
+--- a/node_modules/starlight-blog/libs/path.ts
++++ b/node_modules/starlight-blog/libs/path.ts
+@@ -1,3 +1,4 @@
++
+ export function stripLeadingSlash(path: string) {
+   if (!path.startsWith('/')) {
+     return path
 diff --git a/node_modules/starlight-blog/libs/tags.ts b/node_modules/starlight-blog/libs/tags.ts
 index 21f8ccf..10e829b 100644
 --- a/node_modules/starlight-blog/libs/tags.ts
@@ -115,7 +111,7 @@ index 21f8ccf..10e829b 100644
      },
      props: {
 diff --git a/node_modules/starlight-blog/middleware.ts b/node_modules/starlight-blog/middleware.ts
-index fab7820..d0c2a74 100644
+index fab7820..7e7de88 100644
 --- a/node_modules/starlight-blog/middleware.ts
 +++ b/node_modules/starlight-blog/middleware.ts
 @@ -1,207 +1,212 @@
@@ -288,7 +284,7 @@ index fab7820..d0c2a74 100644
 +                metrics,
 +                tags: tags.map(({label, slug}) => ({
 +                    label,
-+                    href: getRelativeBlogUrl(`/tags/${slug}`, locale),
++                    href: getRelativeUrl(`/tags/${slug}`, locale),
 +                })),
 +                title: entry.data.title,
 +            }
