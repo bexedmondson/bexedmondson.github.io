@@ -34,7 +34,6 @@ entriesArray.sort((a, b) => a.label.localeCompare(b.label))
 <ul>
     {
         entriesArray.map((entry) => { 
-            console.log(entry)
             return (<li><a href={entry.path}>{entry.label} ({entry.count})</a></li>)
         })
     }
