@@ -495,3 +495,25 @@ index fab7820..d0c2a74 100644
 +        type: 'group',
 +    } satisfies StarlightRouteData['sidebar'][number]
  }
+diff --git a/node_modules/starlight-blog/translations.ts b/node_modules/starlight-blog/translations.ts
+index 1804ef8..9a8a644 100644
+--- a/node_modules/starlight-blog/translations.ts
++++ b/node_modules/starlight-blog/translations.ts
+@@ -12,12 +12,12 @@ export const Translations = {
+       ' - Last update: <time datetime="{{isoDate}}">{{date, datetime(dateStyle: medium)}}</time>',
+     'starlightBlog.post.draft': 'Draft',
+     'starlightBlog.post.featured': 'Featured',
+-    'starlightBlog.post.tags': 'Tags:',
++    'starlightBlog.post.tags': 'tags:',
+     'starlightBlog.sidebar.all': 'All posts',
+-    'starlightBlog.sidebar.featured': 'Featured posts',
+-    'starlightBlog.sidebar.recent': 'Recent posts',
+-    'starlightBlog.sidebar.tags': 'Tags',
+-    'starlightBlog.sidebar.authors': 'Authors',
++    'starlightBlog.sidebar.featured': 'featured posts',
++    'starlightBlog.sidebar.recent': 'recent posts',
++    'starlightBlog.sidebar.tags': 'tags',
++    'starlightBlog.sidebar.authors': 'authors',
+     'starlightBlog.sidebar.rss': 'RSS',
+     'starlightBlog.tags.count_one': '{{count}} post with the tag “{{tag}}”',
+     'starlightBlog.tags.count_other': '{{count}} posts with the tag “{{tag}}”',
