@@ -24,6 +24,9 @@ Love and Pies was one of the pioneers in the merge-2 genre, melding a complex st
 
 Behind the scenes, Love and Pies is highly data-driven, built with a custom CMS integrated into Unity and its addressable system. All live op behaviour, gameplay behaviour, story content, and much more are defined and serialized through the CMS, with drag-and-drop slots for all assets associated with each feature. This removed dependencies between artists and developers, and allowed content designers to autonomously implement hundreds of game-days' of story content.
 
+> [!info|float-right]
+> Prior to launch, this flexibility allowed us to build and test three separate core mechanics simultaneously!
+
 The merge-2 gameplay is powered by the ECS framework Entitas, which allows rapid adjustments and extensions of gameplay mechanics. 
 
 ## My contributions
