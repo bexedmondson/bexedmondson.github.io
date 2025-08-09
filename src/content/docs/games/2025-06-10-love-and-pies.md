@@ -16,6 +16,8 @@ hero:
 
 ## Game Description
 
+Live the pie life as top baker in Love & Pies! Uncover juicy secrets in every room as Amelia solves mysteries in her family cafe. In a story full of twists and turns, you'll meet dramatic exes, nasty rivals, eccentric relatives, adorable pets and friendly customers. Endless drama, love and secrets - a merge mystery!
+
 ## My contributions
 
 I was part of the Love and Pies team for six years, from early prototyping and playtesting, via a major pivot in the core game, through global launch, and then into live operations. As a result, it's a little tricky to summarise all the work I did on Love and Pies!
