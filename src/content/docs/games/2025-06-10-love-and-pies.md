@@ -2,7 +2,7 @@
 layout: post
 title: Love and Pies
 author: "Bex Edmondson"
-tags: [game, trailmix, loveandpies]
+tags: [game, trailmix, love and pies]
 hero:
   image: 
     file: loveandpies.png
@@ -24,10 +24,12 @@ Love and Pies was one of the pioneers in the merge-2 genre, melding a complex st
 
 Behind the scenes, Love and Pies is highly data-driven, built with a custom CMS integrated into Unity and its addressable system. All live op behaviour, gameplay behaviour, story content, and much more are defined and serialized through the CMS, with drag-and-drop slots for all assets associated with each feature. This removed dependencies between artists and developers, and allowed content designers to autonomously implement hundreds of game-days' of story content.
 
-> [!info|float-right]
-> Prior to launch, this flexibility allowed us to build and test three separate core mechanics simultaneously!
+The merge-2 gameplay is powered by the ECS framework Entitas, which allows rapid adjustments and extensions of gameplay mechanics.
 
-The merge-2 gameplay is powered by the ECS framework Entitas, which allows rapid adjustments and extensions of gameplay mechanics. 
+:::note[Fun fact]
+Prior to launch, this flexibility allowed us to build and test three separate core mechanics simultaneously!
+:::
+
 
 ## My contributions
 
@@ -47,4 +49,4 @@ I also was the go-to developer for handling complex merges or untangling git mis
 
 The final project I completed as part of the Love and Pies team was a full refactor of the map asset management logic, which was by far the biggest project I independently delivered. The result of my work was a 60% reduction in build time, 95% reduction in frequently-run bake processes, and a major improvement in visible lag and overall performance. 
 
-I'm currently working through my six years at Trailmix and writing up deep-dives into some of the more interesting problems I tackled; you can find more details [here](../tags/loveandpies).
+I'm currently working through my six years at Trailmix and writing up deep-dives into some of the more interesting problems I tackled; you can find more details [here](/tags/love-and-pies).
