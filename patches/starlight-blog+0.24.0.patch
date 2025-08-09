@@ -22,45 +22,44 @@ index 8696050..d654043 100644
        </ul>
 diff --git a/node_modules/starlight-blog/components/TagList.astro b/node_modules/starlight-blog/components/TagList.astro
 new file mode 100644
-index 0000000..2a1fa96
+index 0000000..47e090b
 --- /dev/null
 +++ b/node_modules/starlight-blog/components/TagList.astro
-@@ -0,0 +1,35 @@
+@@ -0,0 +1,34 @@
 +---
 +import LinkCard from '@astrojs/starlight/components'
 +import type { Locale } from '../libs/i18n'
 +import {getAllTags} from '../libs/tags'
 +import {getPathWithLocale, getRelativeUrl, isBlogTagPage} from '../libs/page'
 +
-+    interface Props {
-+        entries: StarlightBlogEntry[]
-+        locale: Locale
-+    }
++interface Props {
++    entries: StarlightBlogEntry[]
++    locale: Locale
++}
 +
-+    const { entries, locale } = Astro.props
++const { entries, locale } = Astro.props
 +
 +const tags = await getAllTags(locale)
-+    ---
++---
 +
 +<div class="posts">
-+        {console.log(tags)}
-+        { tags.prototype.forEach((tagKey, tagValue, tagMap) => (
-+                    <LinkCard title={tagKey} href={
-+                            getRelativeUrl(
-+                                    getPathWithLocale(`/tags/${tagKey}`, locale),
-+                                    false
-+                                )} />
-+                ))
-+        }
-+    </div>
++    { tags.prototype.forEach((tagKey, tagValue, tagMap) => (
++            <LinkCard title={tagKey} href={
++                getRelativeUrl(
++                    getPathWithLocale(`/tags/${tagKey}`, locale),
++                    false
++                )} />
++        ))
++    }
++</div>
 +
 +<style>
-+        .posts {
-+            display: flex;
-+            flex-direction: column;
-+            gap: 3rem;
-+        }
-+    </style>
++    .posts {
++        display: flex;
++        flex-direction: column;
++        gap: 3rem;
++    }
++</style>
 \ No newline at end of file
 diff --git a/node_modules/starlight-blog/libs/config.ts b/node_modules/starlight-blog/libs/config.ts
 index 401cfcd..90baff7 100644
@@ -75,6 +74,92 @@ index 401cfcd..90baff7 100644
      /**
       * The base prefix for all blog routes.
       *
+diff --git a/node_modules/starlight-blog/libs/content.ts b/node_modules/starlight-blog/libs/content.ts
+index 7b88987..a4f3a61 100644
+--- a/node_modules/starlight-blog/libs/content.ts
++++ b/node_modules/starlight-blog/libs/content.ts
+@@ -5,7 +5,7 @@ import config from 'virtual:starlight-blog-config'
+ import context from 'virtual:starlight-blog-context'
+ 
+ import { DefaultLocale, type Locale } from './i18n'
+-import { getRelativeUrl, getRelativeBlogUrl, getPathWithLocale } from './page'
++import {getRelativeUrl, getRelativeBlogUrl, getPathWithLocale, isAnyBlogPage} from './page'
+ import { stripLeadingSlash, stripTrailingSlash } from './path'
+ 
+ const blogEntriesPerLocale = new Map<Locale, StarlightBlogEntry[]>()
+@@ -86,6 +86,63 @@ export async function getBlogEntry(slug: string, locale: Locale): Promise<Starli
+   }
+ }
+ 
++export async function getTaggedNonBlogEntries(locale: Locale): Promise<StarlightEntry[]> {
++  
++  const docEntries = await getCollection('docs')
++  const taggedNonBlogEntries: StarlightEntry[] = []
++
++  const contentRelativePath = `${context.srcDir.replace(context.rootDir, '')}content/docs/`
++
++  for (const entry of docEntries) {
++    if (import.meta.env.MODE === 'production' && entry.data.draft === true) continue
++
++    if (entry.data.tags === undefined || entry.data.tags === null) continue
++
++    const fileRelativePath = entry.filePath?.replace(contentRelativePath, '')
++    
++    if (fileRelativePath?.includes(config.prefix))
++      continue
++    
++    const isDefaultLocaleEntry =
++        fileRelativePath?.startsWith(`${getPathWithLocale('', DefaultLocale)}/`) &&
++        fileRelativePath !== `${getPathWithLocale('', DefaultLocale)}/index.mdx`
++
++    if (isDefaultLocaleEntry) {
++      if (locale === DefaultLocale) {
++        taggedNonBlogEntries.push(entry)
++        continue
++      }
++
++      // Briefly override `console.warn()` to silence logging when a localized entry is not found.
++      const warn = console.warn
++      // eslint-disable-next-line @typescript-eslint/no-empty-function
++      console.warn = () => {}
++
++      try {
++        const localizedEntry = await getEntry('docs', getPathWithLocale(entry.id, locale))
++        if (!localizedEntry) throw new Error('Unavailable localized entry.')
++        if (localizedEntry.data.draft === true) throw new Error('Draft localized entry.')
++        taggedNonBlogEntries.push(localizedEntry)
++      } catch {
++        taggedNonBlogEntries.push(entry)
++      }
++
++      // Restore the original `console.warn()` implementation.
++      console.warn = warn
++    }
++  }
++
++  validateBlogEntries(taggedNonBlogEntries)
++
++  taggedNonBlogEntries.sort((a, b) => {
++    return b.data.date.getTime() - a.data.date.getTime() || a.data.title.localeCompare(b.data.title)
++  })
++
++  blogEntriesPerLocale.set(locale, blogEntries)
++
++  return blogEntries
++}
++
+ export async function getBlogEntries(locale: Locale): Promise<StarlightBlogEntry[]> {
+   if (blogEntriesPerLocale.has(locale)) {
+     return blogEntriesPerLocale.get(locale) as StarlightBlogEntry[]
+@@ -99,6 +156,8 @@ export async function getBlogEntries(locale: Locale): Promise<StarlightBlogEntry
+   for (const entry of docEntries) {
+     if (import.meta.env.MODE === 'production' && entry.data.draft === true) continue
+     
++    if (entry.data.tags === undefined || entry.data.tags === null) continue
++
+     const fileRelativePath = entry.filePath?.replace(contentRelativePath, '')
+ 
+     const isDefaultLocaleEntry =
 diff --git a/node_modules/starlight-blog/libs/navigation.ts b/node_modules/starlight-blog/libs/navigation.ts
 index 2fbbecc..02b9f26 100644
 --- a/node_modules/starlight-blog/libs/navigation.ts
@@ -493,6 +578,18 @@ index fab7820..3d6a294 100644
 +        type: 'group',
 +    } satisfies StarlightRouteData['sidebar'][number]
  }
+diff --git a/node_modules/starlight-blog/routes/Tags.astro b/node_modules/starlight-blog/routes/Tags.astro
+index f49a53e..0c89b6d 100644
+--- a/node_modules/starlight-blog/routes/Tags.astro
++++ b/node_modules/starlight-blog/routes/Tags.astro
+@@ -21,6 +21,7 @@ const pageProps = getPageProps(label)
+ ---
+ 
+ <Page {...pageProps}>
++  {console.log(Astro.locals.starlightRoute)}
+   <PostCount>{Astro.locals.t('starlightBlog.tags.count', { count: entries.length, tag: label })}</PostCount>
+   <Posts {entries} {locale} />
+ </Page>
 diff --git a/node_modules/starlight-blog/translations.ts b/node_modules/starlight-blog/translations.ts
 index 1804ef8..7b198e5 100644
 --- a/node_modules/starlight-blog/translations.ts
