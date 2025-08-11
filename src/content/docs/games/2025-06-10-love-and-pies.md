@@ -22,14 +22,19 @@ Live the pie life as top baker in Love & Pies! Uncover juicy secrets in every ro
 
 Love and Pies was one of the pioneers in the merge-2 genre, melding a complex story set in a stylised, extensive, and highly customisable map with straightforward gameplay brought to life through vibrant art and animations. Live ops run in parallel, ensuring players have a variety of long-term goals and short term boosts to play for. 
 
-Behind the scenes, Love and Pies is highly data-driven, built with a custom CMS integrated into Unity and its addressable system. All live op behaviour, gameplay behaviour, story content, and much more are defined and serialized through the CMS, with drag-and-drop slots for all assets associated with each feature. This removed dependencies between artists and developers, and allowed content designers to autonomously implement hundreds of game-days' of story content.
+Behind the scenes, Love and Pies is highly data-driven, built with a custom CMS integrated into Unity and its addressable system. All live op behaviour, gameplay behaviour, story content, and much more are defined and serialized through the CMS, with drag-and-drop slots for all assets associated with each feature. This removed dependencies between artists and developers, and allowed content designers to autonomously implement hundreds of game-days of story content.
 
-The merge-2 gameplay is powered by the ECS framework Entitas, which allows rapid adjustments and extensions of gameplay mechanics.
+&#32;&#32;
+
+<span style="display: block; float: right; margin-top: 0.5em; margin-left: 1em; margin-bottom: 0em; width: 350px; height: 200px">
 
 :::note[Fun fact]
-Prior to launch, this flexibility allowed us to build and test three separate core mechanics simultaneously!
+Prior to launch, the flexibility of ECS allowed us to build and test three separate core mechanics simultaneously!
 :::
 
+</span>
+
+The merge-2 gameplay is powered by the ECS framework Entitas, which allows rapid adjustments and extensions of gameplay mechanics, building complex behaviours while keeping code structure simple.
 
 ## My contributions
 
