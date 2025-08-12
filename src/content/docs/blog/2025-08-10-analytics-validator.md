@@ -1,6 +1,5 @@
 ---
 title: Making, Breaking, and Uncomplicating Analytic Events
-draft: true
 author: "Bex Edmondson"
 date: 2025-08-10
 tags: [ trailmix, love and pies ]
@@ -79,3 +78,7 @@ So suddenly my task had expanded to cover fixing or changing several events, man
 However, the story doesn't end there. I continued to push for more time while working on other things, and while the automated testing wasn't running properly yet, the documentation aspect was absolutely present. I booked a meeting with each new data team member that joined to show them how it worked and explain the potential. The data team took on the job of writing schemas for new events as they requested implementation from the dev team, which meant that the documentation stayed up to date. During the wait for more dedicated time, I also had the ability to manually run the validation process, with the results only visible to me. As I had spent so much time digging into each of the events, I could see through the noise and tell when there was something truly wrong, so I flagged up relevant issues when things changed, and sometimes got the opportunity to fix other issues as side effects. Obviously this wasn't sustainable though!
 
 Eventually I did get more time - two years later! I threw myself into ironing out the final issues, and over the next couple of weeks, with the help of some dedicated data team members (if you're reading this, Sonya and Ankit, thank you so much - you were both invaluable!), I got to a point where we had no failures. I set up nightly automation and handed monitoring over to the QA team.
+
+## So did it work?
+
+I think overall, it did!
