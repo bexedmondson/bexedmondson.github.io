@@ -22,10 +22,10 @@ index 8696050..d654043 100644
        </ul>
 diff --git a/node_modules/starlight-blog/components/TagList.astro b/node_modules/starlight-blog/components/TagList.astro
 new file mode 100644
-index 0000000..2a1fa96
+index 0000000..170cf6d
 --- /dev/null
 +++ b/node_modules/starlight-blog/components/TagList.astro
-@@ -0,0 +1,35 @@
+@@ -0,0 +1,38 @@
 +---
 +import LinkCard from '@astrojs/starlight/components'
 +import type { Locale } from '../libs/i18n'
@@ -40,17 +40,20 @@ index 0000000..2a1fa96
 +    const { entries, locale } = Astro.props
 +
 +const tags = await getAllTags(locale)
-+    ---
++---
 +
 +<div class="posts">
 +        {console.log(tags)}
-+        { tags.prototype.forEach((tagKey, tagValue, tagMap) => (
-+                    <LinkCard title={tagKey} href={
++        {
++            tags !== undefined && tags !== null ? (
++                tags.prototype.forEach((tagKey, tagValue, tagMap) => (
++                        <LinkCard title={tagKey} href={
 +                            getRelativeUrl(
-+                                    getPathWithLocale(`/tags/${tagKey}`, locale),
-+                                    false
-+                                )} />
++                                getPathWithLocale(`/tags/${tagKey}`, locale),
++                                false
++                            )}/>
 +                ))
++            ) : null
 +        }
 +    </div>
 +
