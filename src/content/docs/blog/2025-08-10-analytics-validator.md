@@ -2,6 +2,7 @@
 title: Making, Breaking, and Uncomplicating Analytic Events
 author: "Bex Edmondson"
 date: 2025-08-10
+draft: false
 tags: [ trailmix, love and pies ]
 ---
 
@@ -81,4 +82,28 @@ Eventually I did get more time - two years later! I threw myself into ironing ou
 
 ## So did it work?
 
-I think overall, it did!
+I think overall, it did! Having understanding of the 
+
+- added abiity to run validation against events that came from builds on specific branches
+- filtered daily testing to just main and release branch builds
+- set up slack notifications to notify qa dept of test status
+- had meeting with qa to emphasise the importance of not letting errors go and letting ourselves become accustomed to failures (edit this to sound like it's something qa and i came up with together though)
+
+- what could we have done that we didn't do?
+  - publish the readable generated version to something readable to allow CS agents to read players' events and understand the context of the players' requests
+  - make the schemas more thorough - validate values more with regexes or specified values, or combinations of values in different fields
+  - periodic validation against live events
+  - figure out a better way to validate whether an event was missing completely
+  - implement a testing plan that tested all events
+  - probably a lot more things!
+
+# Key take-aways
+
+- solve problems at the source, not at the symptom
+- adding work to already-overworked people is never a good solution
+- the solution to a problem should not be "well we have to just do the same exact process as before but better"
+- automate testing wherever possible
+- for things that aren't being intentionally changed, work on an alert-based system where checks happen automatically
+- ensure that false failures aren't present when you launch a new testing system or everyone will become accustomed to seeing failures and not pay attention when something does go wrong
+- it's always better for the people using documentation to be the ones responsible for its accuracy because they're invested in it being right and they're engaging with it regularly
+- if you can see the value in a tool, build a prototype to help people understand what's possible and bring up that you have a solution for something in relevant discussions
