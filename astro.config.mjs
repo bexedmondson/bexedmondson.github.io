@@ -2,9 +2,9 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import catppuccin from "@catppuccin/starlight";
-import starlightAutoSidebar from 'starlight-auto-sidebar';
 import sitemap from '@astrojs/sitemap';
-import starlightFullViewMode from 'starlight-fullview-mode'
+import starlightFullViewMode from 'starlight-fullview-mode';
+import starlightBlog from 'starlight-blog';
 
 // https://astro.build/config
 export default defineConfig({
@@ -22,18 +22,7 @@ export default defineConfig({
             sidebar: [
                 {
                     label: 'games',
-                    autogenerate: { directory: 'games' },
-                    badge: 'Outdated'
-                },
-                {
-                    label: 'projects',
-                    autogenerate: { directory: 'projects' },
-                    badge: 'Coming Soon'
-                },
-                {
-                    label: 'blog',
-                    autogenerate: { directory: 'blog' },
-                    badge: 'Coming Soon'
+                    autogenerate: { directory: 'games' }
                 },
                 {
                     label: 'about',
@@ -49,17 +38,18 @@ export default defineConfig({
                     dark: { flavor: "mocha", accent: "sapphire" },
                     light: { flavor: "latte", accent: "sapphire" },
                 }),
-                starlightAutoSidebar(),
                 starlightFullViewMode({ 
                     leftSidebarEnabled: false,  
                     rightSidebarEnabled: true,
                 }),
+                starlightBlog({
+                    navigation: 'sidebar',
+                    prevNextLinksOrder: 'chronological'
+                })
             ],
             components: {
                 Head: './src/components/Head.astro',
                 Hero: './src/components/Hero.astro',
-                CollectionCardList: './src/components/CollectionCardList.astro',
-                LinkIconCard: './src/components/LinkIconCard.astro',
                 Footer: './src/components/Footer.astro',
             },
             customCss: [
