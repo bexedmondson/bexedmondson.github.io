@@ -21,11 +21,11 @@ interface TagDetail {
 const allTags : Array<TagDetail> = []
 
 if (entryTags.size > 0) {
-    entryTags.entries().forEach((entry, k) => {
+    entryTags.forEach((value, key, map) => {
         allTags.push({
-            path: entry[0],
-            label: entry[1].label,
-            count: entry[1].entries
+            path: key,
+            label: value.label,
+            count: value.entries
         })
     })
 
