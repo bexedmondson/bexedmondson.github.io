@@ -20,17 +20,15 @@ interface TagDetail {
 
 const allTags : Array<TagDetail> = []
 
-if (entryTags.size > 0) {
-    entryTags.entries().forEach((entry) => {
-        allTags.push({
-            path: entry[0],
-            label: entry[1].label,
-            count: entry[1].entries
-        })
+entryTags.entries().forEach((entry) => {
+    allTags.push({
+        path: entry[0],
+        label: entry[1].label,
+        count: entry[1].entries
     })
+})
 
-    allTags.sort((a, b) => a.label.localeCompare(b.label))
-}
+allTags.sort((a, b) => a.label.localeCompare(b.label))
 
 const allTagsCountSort = allTags.toSorted((a, b) => b.count - a.count)
 
