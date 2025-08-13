@@ -3,7 +3,7 @@ title: Making, Breaking, and Uncomplicating Analytic Events
 author: "Bex Edmondson"
 date: 2025-08-10
 draft: false
-tags: [ trailmix, love and pies ]
+tags: [ trailmix, love and pies, tooling ]
 excerpt: "Or: how I invented and implemented a system that prevented the majority of analytics bugs, how I came up with the idea in the first place, and the key things I learned along the way."
 ---
 
