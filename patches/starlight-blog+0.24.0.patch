@@ -22,7 +22,7 @@ index 8696050..d654043 100644
        </ul>
 diff --git a/node_modules/starlight-blog/components/TagList.astro b/node_modules/starlight-blog/components/TagList.astro
 new file mode 100644
-index 0000000..7a90b42
+index 0000000..170cf6d
 --- /dev/null
 +++ b/node_modules/starlight-blog/components/TagList.astro
 @@ -0,0 +1,38 @@
@@ -43,27 +43,27 @@ index 0000000..7a90b42
 +---
 +
 +<div class="posts">
-+    {console.log(tags)}
-+    {
-+        tags !== undefined && tags !== null && tags.prototype !== undefined && tags.prototype !== null ? (
-+            tags.prototype.forEach((tagKey, tagValue, tagMap) => (
-+                <LinkCard title={tagKey} href={
-+                    getRelativeUrl(
-+                        getPathWithLocale(`/tags/${tagKey}`, locale),
-+                        false
-+                    )}/>
-+            ))
-+        ) : null
-+    }
-+</div>
++        {console.log(tags)}
++        {
++            tags !== undefined && tags !== null ? (
++                tags.prototype.forEach((tagKey, tagValue, tagMap) => (
++                        <LinkCard title={tagKey} href={
++                            getRelativeUrl(
++                                getPathWithLocale(`/tags/${tagKey}`, locale),
++                                false
++                            )}/>
++                ))
++            ) : null
++        }
++    </div>
 +
 +<style>
-+    .posts {
-+        display: flex;
-+        flex-direction: column;
-+        gap: 3rem;
-+    }
-+</style>
++        .posts {
++            display: flex;
++            flex-direction: column;
++            gap: 3rem;
++        }
++    </style>
 \ No newline at end of file
 diff --git a/node_modules/starlight-blog/libs/config.ts b/node_modules/starlight-blog/libs/config.ts
 index 401cfcd..90baff7 100644
