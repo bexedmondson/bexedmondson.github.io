@@ -20,11 +20,11 @@ interface TagDetail {
 
 const allTags : Array<TagDetail> = []
 
-entryTags.entries().forEach((entry) => {
+entryTags.forEach((value, key, map) => {
     allTags.push({
-        path: entry[0],
-        label: entry[1].label,
-        count: entry[1].entries
+        path: key,
+        label: value.label,
+        count: value.entries
     })
 })
 

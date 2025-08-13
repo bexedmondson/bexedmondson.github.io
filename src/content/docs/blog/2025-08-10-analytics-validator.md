@@ -8,7 +8,7 @@ tags: [ trailmix, love and pies ]
 
 This is of how I invented and implemented a system that made analytics bugs in live almost impossible, how I came up with the idea in the first place, and the key things I learned along the way.
 
-# Context
+### Context
 
 Let me set the stage for the context of this story. When I began working at Trailmix, the game that would become Love and Pies was still over a year from release. As such, the team was small and our playtests even smaller, which meant that our player data gathering at the time consisted of watching over another teammate's shoulder.
 
@@ -17,13 +17,13 @@ Let me set the stage for the context of this story. When I began working at Trai
 In games, analytic events consist of pieces of data about a player and what they're doing. Analytic events are important in free-to=play games because it's almost impossible to make a game sustainable without knowing (at minimum) where your players are spending money, which players are spending money, and where they're dropping out of the game completely.
 </details>
 
-## Setting the stage
+### Setting the stage
 
 A few months after I joined, Trailmix hired their first data team member, who was given the gargantuan task of building out the whole data pipeline from scratch. They began setting up a system where the game build would send data to a Playfab data store, which would then be injested into Google BigQuery for analysis. Due to the obvious capacity constraints on the data team side and a similar lack of time on the dev team side, devs began setting up analytics events for our features in a pretty ad-hoc manner, usually without much forethought, consistency or testing. This is a pretty normal situation for small teams who are working fast, but in turned out that Love and Pies had longevity! So these hacky analytic event implementations made it into production. And then stayed there. For quite a long time. 
 
 And as is often the case with hacky implementations, it was only a matter of time before something went wrong.
 
-## What went wrong
+### What went wrong
 
 One Monday morning about a year after Love and Pies' global release, a marketing team member came over to the devs in quite a frantic state. They told us that the game hadn't been sending any analytics events about monetisation or attribution for at least three days. This was quite terrifying to hear, because four days ago we had released an update, and during those four days we had been featured by the Google Play store. This meant two things:
 1. We were missing crucial data for a huge number of new players.
@@ -33,7 +33,7 @@ We began digging straight away, and before long a teammate discovered that they'
 
 They of course immediately began working on a fix, our QA team dropped what they were doing to start testing, and before the end of the day we had submitted a hotfix that solved the issue. But the end result was that we permanently lost the earliest, most important monetisation data for all the new players that came in from the Play store featuring, and we had to delay the next release by more than a week.
 
-## Problem solved?
+### Problem solved?
 
 After we had verified that the fix had worked, we now needed to stop it from happening again. Devs, marketing, data, and production all crowded into a small meeting room and began to figure out how this could've happened to begin with, and what we could do about it in future.
 
@@ -45,7 +45,7 @@ I was fully aware of how overworked our singular QA tester was, and it seemed to
 
 I wasn't the only one thinking this way: the head of the data team became increasingly frustrated as no systematic changes were suggested, and the meeting concluded with QA agreeing to the extra workload. I left the meeting knowing that there must be a better solution out there.
 
-## Finding another way
+### Finding another way
 
 I thought about our analytics system in general as I sat on the tube home that day. Its fragility was not the only problem; I had several grievances with it:
 - Our events were sent in JSON format. Every key and every string value were sent as abbreviations in an attempt to minimise the amount of data we were sending. That in itself was a problem, because it was almost impossible to know what each abbreviation meant without digging into the code - not something that a dev should have to do, let alone someone on the data or marketing team!
@@ -64,7 +64,7 @@ I knew I was on to something good - I could solve the automation, inconsistency,
 
 It worked great. After a few tweaks, including bringing in a custom schema template so I could get inter-schema links working, I brought it to my boss. Happily, he saw the potential immediately, and approved me to have some time to start implementing it! 
 
-## Implementation
+### Implementation
 
 I began by copying my rough prototype into a new work repository, and set up authentication with Playfab so that I could pull data from storage. I set up my validation script in a job on Teamcity on our build machines, so that I could automatically pull the most recent 24 hours of data. Importantly, I didn't pull data from our live build: I pulled the data from the store that our test builds sent to, so that we could catch issues *before* they went live, while QA was running other tests.
 
@@ -80,7 +80,7 @@ However, the story doesn't end there. I continued to push for more time while wo
 
 Eventually I did get more time - two years later! I threw myself into ironing out the final issues, and over the next couple of weeks, with the help of some dedicated data team members (if you're reading this, Sonya and Ankit, thank you so much - you were both invaluable!), I got to a point where we had no failures. I set up nightly automation and handed monitoring over to the QA team.
 
-## So did it work?
+### So did it work?
 
 I think overall, it did! Having understanding of the 
 
