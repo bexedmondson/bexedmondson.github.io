@@ -1,3 +1,5 @@
+@layer starlight, overrides;
+
 h1, h2, h3, h4, h5, h5 {
     font-family: 'Enriqueta', serif;
 }
@@ -5,5 +7,19 @@ h1, h2, h3, h4, h5, h5 {
 @media (prefers-reduced-motion: no-preference) {
     @view-transition {
         navigation: auto;
+    }
+}
+
+@layer overrides.content {
+    .sl-markdown-content details {
+        background-color: var(--sl-color-accent-low);
+        border-radius: 0 0.5rem 0.5rem 0;
+        padding: 1rem;
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
+    .sl-markdown-content details p {
+        padding-left: 1.25rem;
+        padding-right: 0.75rem;
     }
 }
