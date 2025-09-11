@@ -14,6 +14,7 @@
     "@astrojs/sitemap": "^3.4.1",
     "@astrojs/starlight": "^0.34.3",
     "@catppuccin/starlight": "^1.0.1",
+    "@expressive-code/plugin-line-numbers": "^0.41.3",
     "@fontsource/enriqueta": "^5.2.6",
     "astro": "^5.6.1",
     "patch-package": "^8.0.0",
