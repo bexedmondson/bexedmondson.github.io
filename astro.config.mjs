@@ -25,6 +25,10 @@ export default defineConfig({
                 autogenerate: { directory: 'games' }
             },
             {
+                label: 'other projects',
+                autogenerate: { directory: 'projects' }
+            },
+            {
                 label: 'about',
                 slug: 'about'
             },
