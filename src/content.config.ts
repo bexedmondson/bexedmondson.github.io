@@ -11,8 +11,12 @@ export const collections = {
 			extend: (context) => blogSchema(context)
 		}) 
 	}),
-	games: defineCollection({
-		loader: glob({ pattern: "**.md", base: "./src/content/docs/games" }),
-		schema: docsSchema()
-	})
+    games: defineCollection({
+        loader: glob({ pattern: "**.md", base: "./src/content/docs/games" }),
+        schema: docsSchema()
+    }),
+    projects: defineCollection({
+        loader: glob({ pattern: "**.md", base: "./src/content/docs/projects" }),
+        schema: docsSchema()
+    })
 };
