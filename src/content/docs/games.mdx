@@ -1,18 +1,11 @@
 ---
-title: Portfolio
+title: Games
 ---
 
 import CollectionCardList from '../../../src/components/CollectionCardList.astro';
-import { Tabs, TabItem } from '@astrojs/starlight/components';
 
-<Tabs>
-<TabItem label="All">
-	<CollectionCardList collectionName="portfolio" shouldStagger="true"></CollectionCardList>
-</TabItem>
-<TabItem label="Games">
-	<CollectionCardList collectionName="games" shouldStagger="true"></CollectionCardList>
-</TabItem>
-<TabItem label="Misc">
-	<CollectionCardList collectionName="projects" shouldStagger="true"></CollectionCardList>
-</TabItem>
-</Tabs>
+<CollectionCardList collectionName="games" shouldStagger="true"></CollectionCardList>
+
+### Projects
+
+<CollectionCardList collectionName="projects" shouldStagger="true"></CollectionCardList>
