@@ -12,11 +12,11 @@ export const collections = {
 		}) 
 	}),
     games: defineCollection({
-        loader: glob({ pattern: "**.md", base: "./src/content/docs/games" }),
+        loader: glob({ pattern: "games/*.md", base: "./src/content/docs" }),
         schema: docsSchema()
     }),
     projects: defineCollection({
-        loader: glob({ pattern: "**.md", base: "./src/content/docs/projects" }),
+        loader: glob({ pattern: "projects/*.md", base: "./src/content/docs" }),
         schema: docsSchema()
     }),
     portfolio: defineCollection({
