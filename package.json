@@ -16,6 +16,7 @@
     "@catppuccin/starlight": "^1.0.1",
     "@expressive-code/plugin-line-numbers": "^0.41.3",
     "@fontsource/enriqueta": "^5.2.6",
+    "@lucide/astro": "^0.547.0",
     "astro": "^5.6.1",
     "patch-package": "^8.0.0",
     "sharp": "^0.32.5",
