@@ -1,24 +1,24 @@
 ---
+import { Icon } from '@astrojs/starlight/components';
+import type { StarlightIcon } from '../components/Icons';
 import type { HTMLAttributes } from 'astro/types';
-import { ArrowRight } from '@lucide/astro';
 
 interface Props extends Omit<HTMLAttributes<'a'>, 'title'> {
+    icon?: StarlightIcon;
     title: string;
     description?: string;
 }
-const { title, description, ...attributes } = Astro.props;
+
+const { icon, title, description, ...attributes } = Astro.props;
 ---
 
 <a {...attributes}>
 <article class="card sl-flex">
 	<span class="title sl-flex">
-        <slot name="icon">
-            <ArrowRight size="1.333em" class="icon-arrow rtl:flip" />
-        </slot>
-        
+        {icon && <Icon name={icon} class="icon" size="1.333em" />}
 		<span class="title" set:html={title} />
         
-		<ArrowRight size="1.333em" class="icon-arrow rtl:flip" />
+		<Icon name="right-arrow" size="1.333em" class="icon-arrow rtl:flip" />
 	</span>
 	{description && <span class="description" set:html={description} />}
     <div class="body"><slot /></div>
