@@ -18,5 +18,9 @@ export const collections = {
     projects: defineCollection({
         loader: glob({ pattern: "**.md", base: "./src/content/docs/projects" }),
         schema: docsSchema()
+    }),
+    portfolio: defineCollection({
+        loader: glob({ pattern: "(games|projects)/*.md", base: "./src/content/docs" }),
+        schema: docsSchema()
     })
 };

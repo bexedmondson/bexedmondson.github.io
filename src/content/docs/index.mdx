@@ -10,14 +10,19 @@ hero:
 
 import { CardGrid } from '@astrojs/starlight/components';
 import LinkIconCard from '../../../src/components/LinkIconCard.astro';
+import { Gamepad2, Tags, Info, ScrollText } from '@lucide/astro';
 
 <CardGrid stagger>
-	<LinkIconCard title="Portfolio" icon="puzzle" href="/games">
+	<LinkIconCard title="Portfolio" href="/games">
+		<Gamepad2 class="icon" size="1.333em" slot="icon" />
 	</LinkIconCard>
-	<LinkIconCard title="About" icon="information" href="/about">
+	<LinkIconCard title="About" href="/about">
+		<Info class="icon" size="1.333em" slot="icon" />
 	</LinkIconCard>
-	<LinkIconCard title="Explore" icon="magnifier" href="/tags">
+	<LinkIconCard title="Explore" href="/tags">
+		<Tags class="icon" size="1.333em" slot="icon" />
 	</LinkIconCard>
 	<LinkIconCard title="Blog" icon="document" href="/blog">
+		<ScrollText class="icon" size="1.333em" slot="icon" />
 	</LinkIconCard> 
 </CardGrid>
