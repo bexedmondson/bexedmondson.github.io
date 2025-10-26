@@ -11,16 +11,20 @@ const posts = await getCollection(collectionName);
 <CardGrid stagger={shouldStagger}>
 	{
         posts.sort((a,b) => b.id.localeCompare(a.id)).map((post) => {
+            let image = post.data.image;
+            if (image === undefined)
+                image = post.data.hero.image.file;
+            
             let directory = post.filePath.substring(0, post.filePath.lastIndexOf("/"));
             if (directory.includes("games"))
                 return (
-                    <LinkIconCard title={post.data.title} href={"/" + post.id}>
+                    <LinkIconCard title={post.data.title} img={image} href={"/" + post.id}>
                         <Gamepad2 size="1.333em" class="icon" slot="icon" />
                     </LinkIconCard>
                 )
             else 
                 return (
-                    <LinkIconCard title={post.data.title} href={"/" + post.id}>
+                    <LinkIconCard title={post.data.title} img={image} href={"/" + post.id}>
                         <PanelsTopLeft size="1.333em" class="icon2" slot="icon" />
                     </LinkIconCard>
                 )

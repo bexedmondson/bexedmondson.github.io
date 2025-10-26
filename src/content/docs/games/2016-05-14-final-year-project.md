@@ -5,7 +5,7 @@ author: "Bex Edmondson"
 tags: [game, personalproject]
 hero:
   image: 
-    file: finalyearprojectgradient.png
+    file: "./finalyearproject.png"
   actions:
    - text: watch gameplay video
      link: https://www.youtube.com/watch?v=t5m0qVqrePU

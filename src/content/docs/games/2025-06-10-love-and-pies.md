@@ -5,7 +5,7 @@ author: "Bex Edmondson"
 tags: [game, trailmix, love and pies]
 hero:
   image: 
-    file: loveandpies.png
+    file: "./loveandpies.png"
   actions:
    - text: download here
      link: https://lnp-merge.onelink.me/wa3J/lovenpiesfbook
