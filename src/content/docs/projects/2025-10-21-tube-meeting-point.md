@@ -5,7 +5,7 @@ author: "Bex Edmondson"
 tags: [project]
 hero:
   image: 
-    file: tubemeetingpoint.png
+    file: "./tubemeetingpoint.png"
   actions:
    - text: try it out
      link: https://bexedmondson.com/meetingpoint

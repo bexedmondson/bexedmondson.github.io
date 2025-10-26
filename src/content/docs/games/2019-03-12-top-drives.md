@@ -5,7 +5,7 @@ author: "Bex Edmondson"
 tags: [game, hutch]
 hero:
   image: 
-    file: topdrivesgradient.png
+    file: "./topdrives.png"
   actions:
    - text: download here
      link: http://onelink.to/3tu4kw

@@ -6,7 +6,7 @@ tags: [game, hutch]
 hero:
   tagline: "2018"
   image: 
-    file: hotwheelsgradient.png
+    file: "./hotwheels.png"
   actions:
    - text: download on iOS
      link: https://itunes.apple.com/no/app/hot-wheels-race-off/id1141876504
