@@ -49,7 +49,7 @@ At time of writing, this tool takes in a set of starting tube stations (i.e. you
 My to-do list with this project, as of October 2025:
 - ~~Filling out the dataset with the Elizabeth line and Northern Line extension, and checking that nothing else is missing~~
 - Refactoring the algorithm more than I already have, to make the calculation a lot more optimal
-- Adding a mode where you can find the optimal station to meet, without providing optional 
+- Adding a mode where you can find the optimal station to meet without having to provide a list of possible end stations
 - Showing the route each person would need to take
 - Adding line changeover time into the calculations
 - Showing alternative meeting points and associated routes
