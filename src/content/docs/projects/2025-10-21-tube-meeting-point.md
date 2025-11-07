@@ -22,6 +22,10 @@ hero:
 
 ## What is this?
 
+At time of writing, this tool takes in a set of starting tube stations (i.e. you and your friends' closest stations) and a set of possible stations to meet at, and calculates which end station has the lowest average travel time from each starting station. See [below](#still-to-come) for future planned functionality!
+
+## Why I made this
+
 I began putting this together after my partner spent three days going back and forth with a group of friends, trying to figure out where to meet up. I'm a problem solver at heart, so though I knew this wouldn't be something I could get done in time to help this particular scenario, maybe it would be useful in future!
 
 ## The easy part
@@ -39,10 +43,6 @@ However, I was undeterred. After spending a long time - too long - reading about
 I found a library that had an implementation of Dijkstra's algorithm, and began implementing. Unfortunately the library didn't quite return the information I actually needed - it would return the shortest path from one point to another, but without the cost of that shortest path. And without that, I couldn't find the best solution for all possible starting points. So I forked the library and used my own version instead!
 
 I ran into some issues with replacing a library with my own implementation, admittedly due to my own inexperience with javascript. As a result, I put this on the backburner for a while, but this project was always something I wanted to go back and fix - and I've finally found time to do just that.
-
-## What does it do?
-
-At time of writing, this tool takes in a set of starting tube stations (i.e. you and your friends' closest stations) and a set of possible stations to meet at, and calculates which end station has the lowest average travel time from each starting station. See below for future planned functionality!
 
 ## Still to come
 
