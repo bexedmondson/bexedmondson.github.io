@@ -9,6 +9,11 @@ import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers'
 
 // https://astro.build/config
 export default defineConfig({
+    vite: {
+        build: {
+            assetsInlineLimit: 0
+        },
+    },
     site: 'https://bexedmondson.com',
     integrations: [starlight({
         title: 'bex edmondson',
