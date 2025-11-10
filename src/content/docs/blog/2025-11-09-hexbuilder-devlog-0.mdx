@@ -1,0 +1,68 @@
+---
+title: "Hexbuilder: Devlog #0"
+author: "Bex Edmondson"
+date: 2025-11-09
+draft: false
+tags: [ godot, personalProject ]
+tableOfContents: { maxHeadingLevel: 6 }
+excerpt: "An introduction to my ongoing project Hexbuilder, laying the groundwork for future devlogs."
+---
+
+import Pandabox from '../../../../src/components/Pandabox.astro';
+import { ClientRouter } from "astro:transitions";
+
+<ClientRouter />
+
+Hexbuilder is the name[^1] of a personal project I've been working on here-and-there for the last few months. As such, I've already done a decent chunk of work on it, but I decided that for accountability, I should start posting about it publicly! So this post is to summarise what I've done so far and give context for future updates.
+
+## What it is
+
+Hexbuilder is a turn-based, city builder, resource management game. As the name implies, the map is laid out on a hex grid. The central mechanic is based on building specific things on tiles: each tile you can build will consume and provide different resources when each turn ends. Tiles also have effects on neighbouring tiles, e.g. a smelter next to a mine will produce one more stone per turn.
+
+Unlocking new terrain tiles to build on also costs resources. Additionally, there are restrictions on which types of tiles can be built on which types of terrains, e.g. a mine can only be built on a hill or a mountain.
+
+## What I've done so far
+
+- Created the first draft of the hex map
+- Implemented tile purchasing and tile placement
+- [Processed the 3D tile assets I'm currently using into 2D assets](../2025-09-10-batch-rendering-blender) for use in Godot's tile map system
+- Set up a data structure to hold game config data for each tile
+- Implemented turns, including resource quantity changes based on existing tiles
+- Implemented tile adjacency effects
+- Built a tool to more easily view and change which tiles can be placed on which terrain types
+- Expanded the tiles tool to view and change tiles' adjacency effects on other tiles
+- Quick and dirty first pass at camera movement
+- Ultra basic placeholder HUD with a next turn button and currency display
+- Even more basic placeholder popups for unlocking a tile and building a tile
+- Noise-based terrain generation
+- First draft at river detection in generated terrain
+
+## Screenshots
+
+<Pandabox galleryid="hexbuilder-log0" transitionType="fade" />
+
+## What's next
+
+The main problem I need to solve is...well, fundamentally that I'm not a game designer! Developing games - well within my skill set. But designing is a whole other matter. I've got the mechanics, and I have them functioning to a reasonable degree, but there are bigger questions that I need to figure out. For example:
+- what is success?
+- what is failure?
+- is there even a fail state at all?
+- what is progress?
+- what is the goal?
+
+...and so on.
+
+Such nebulous, open-ended questions! Ordinarily, my job is based on having the end goal provided to me, and then figuring out the best way to make that happen, balancing considerations like performance, architecture, speed, and whatever else. Finding the answers to questions like the above is such a different way of thinking - I need to decide the end goal, and how players should reach it. This seems so difficult! I have no idea how game designers do this every day!
+
+To be honest, I've gotten to this point with previous projects quite a lot, where I have the central mechanic but none of the bigger progression questions answered, and in the past I've just moved on to something else. But I'm more determined this time around, so I hope to post devlog #1 with at least some of the above questions answered.
+
+My very early thoughts are around including some kind of tech-tree style system to answer some questions around progression. I think I could use the tile placement settings to make buildings upgradable, and then separately I would need to determine how buildings get unlocked.
+
+I also would like to modify the tiles to be more flexible. Currently, the building tiles contain the terrain, which means that I'm quite limited in determining which buildings can go on which terrain, and I think this might end up limiting me a fair amount when it comes to the tech tree concept as well. What I have currently is workable, but I may start looking into this so that I have some room to play around and see what feels fun.
+
+I have some other things that I know I'll need to do eventually (like making buildings destroyable), but I don't want to get bogged down in minor improvements when such big questions are looming over me. I'm doing my best to stay focussed on solving the big questions first - stay tuned to see if I manage that!
+
+
+---
+
+[^1]: _or at least, the placeholder name until I think of something better_

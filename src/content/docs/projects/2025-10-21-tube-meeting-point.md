@@ -2,7 +2,7 @@
 layout: post
 title: "Tube Meeting Point Finder"
 author: "Bex Edmondson"
-tags: [project]
+tags: [ project, personalProject ]
 hero:
   image: 
     file: "./tubemeetingpoint.png"

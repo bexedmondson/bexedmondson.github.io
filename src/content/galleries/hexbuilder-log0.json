@@ -1,0 +1,28 @@
+{
+    "images": [
+        {
+            "src": "@images/hexbuilder-log0/placementtool.png",
+            "alt": "A screenshot of the Godot game engine, showing a selection list on the left and a diagram on the right linking a box with details about the smelter tile to two boxes for dirt and rock tiles. The tab is called placement, indicating that the smelter is restricted to just these tiles.",
+            "title": "Tile Placement Tool",
+            "description": "This tool allows me to more easily see and change which tiles can be placed on top of which other tiles, as well as change other tile data."
+        },
+        {
+            "src": "@images/hexbuilder-log0/adjacencytool.png",
+            "alt": "A screenshot of the Godot game engine, showing a selection list on the left and a diagram on the right linking a box with details about the smelter tile to a box for a mine tiles. The tab is called adjacency, and the info in the mine tile indicates that placing a mine by a smelter will increase the smelter's stone yield per turn by 1.",
+            "title": "Tile Adjacency Tool",
+            "description": "This tool allows me to see and change which tiles have effects on others when placed next to them, and what those effects are."
+        },
+        {
+            "src": "@images/hexbuilder-log0/unlockedtiles.png",
+            "alt": "A screenshot of a hexagonal grid on a grey background, with several types of tiles unlocked: forest, grass, river, sand, and dirt. The outermost tiles are greyed out.",
+            "title": "Hex Map",
+            "description": "This is an example of the map as it currently looks. When a tile is unlocked, any adjacent invisible tiles will be revealed."
+        },
+        {
+            "src": "@images/hexbuilder-log0/terrainnoisesettings.png",
+            "alt": "A screenshot of a Godot inspector, displaying several settings related to thresholds and noise values for terrain generation.",
+            "title": "Terrain Generation Settings",
+            "description": "These settings contain references to each of the terrain tiles, threshold levels for easy adjustment, and noise textures for different values."
+        }
+    ]
+}
