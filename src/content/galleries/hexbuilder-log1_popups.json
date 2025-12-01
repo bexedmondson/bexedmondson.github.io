@@ -1,0 +1,22 @@
+{
+    "images": [
+        {
+            "src": "@images/hexbuilder-log1/popup-residents.png",
+            "alt": "A screenshot showing a popup with a list of names, all of which are silly portmanteaus of other names like Kimothy and Ronathan",
+            "title": "Residents Popup",
+            "description": "I spent way too long making up all those names. I have like 140 of them now, I just couldn't stop myself from coming up with more haha"
+        },
+        {
+            "src": "@images/hexbuilder-log1/popup-housing.png",
+            "alt": "A screenshot showing a popup with a list of coordinates, with names by each house and an indication of how many can fit in each. There's also an arrow to the right of each house's display.",
+            "title": "Housing Popup",
+            "description": "The arrow on the right closes the popup and centers the camera on the residence in question. House icons are TBD"
+        },
+        {
+            "src": "@images/hexbuilder-log1/popup-workplaces.png",
+            "alt": "A screenshot showing a popup with a list of workplaces like woodcutter and market, with names by each workplace and a plus and minus button that allows assigning and unassiging workers",
+            "title": "Workplaces Popup",
+            "description": ""
+        }
+    ]
+}

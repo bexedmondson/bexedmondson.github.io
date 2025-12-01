@@ -1,0 +1,22 @@
+{
+    "images": [
+        {
+            "src": "@images/hexbuilder-log1/alphabetised-tree.png",
+            "alt": "A screenshot of the Godot game engine, showing a selection list on the left much like in devlog #0 - only this time, the selection list is alphabetised!",
+            "title": "Tile Tool - now with an alphabetised selection list!",
+            "description": ""
+        },
+        {
+            "src": "@images/hexbuilder-log1/map.png",
+            "alt": "A screenshot of a hexagonal grid on a grey background, with several types of tiles unlocked: forest, grass, river, sand, and dirt, with some buildings and UI over the top. The outermost tiles are greyed out.",
+            "title": "Hex Map as of dev log #1",
+            "description": ""
+        },
+        {
+            "src": "@images/hexbuilder-log1/tile-unlock.gif",
+            "alt": "A gif of a hexagonal grid tile unlocking, with an animation of an hourglass shrinking and then a lock icon shaking and opening before disappearing.",
+            "title": "Tile Unlock animation",
+            "description": "Unlocking a tile on a new turn was a bit anticlimactic and quite hard to notice, so I thought I'd add a little bit of pizzazz to it :)"
+        }
+    ]
+}
