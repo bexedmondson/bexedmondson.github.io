@@ -1,0 +1,100 @@
+---
+title: "Hexbuilder: Devlog #2"
+author: "Bex Edmondson"
+date: 2025-12-23
+draft: false
+tags: [ godot, personal project ]
+tableOfContents: { maxHeadingLevel: 6 }
+excerpt: "Progression in code but not in mechanics"
+---
+
+import Pandabox from '../../../../src/components/Pandabox.astro';
+import { ClientRouter } from "astro:transitions";
+import { Image } from 'astro:assets';
+import buildingWeaver from './building-weaver.png';
+import placementTree from './placement-tree.png';
+import godotBeforeAfter from './godot_beforeafter.png';
+
+<ClientRouter />
+
+Catch up on the Hexbuilder progress starting [here!](../2025-11-09-hexbuilder-devlog-0)
+
+## Screenshots
+
+<Pandabox galleryid="hexbuilder-log2" transitionType="fade" />
+
+## What have I done since the last post?
+
+I have made a LOT of changes since the last time, but I want to get this post up before the changelist grows so much as to be overwhelming. So here's the quick-fire round :)
+
+### 3D Modelling
+
+I started some very rudimentary modelling in Blender a little bit! Began by merging existing assets to switch up some things, but then I had to get brave and actually build something as there was no existing asset for the weaver building I wanted to make. So I made a loom! Very simple but I think it fits nicely with the art style of everything else, and it communicates what it needs to. Plus I learned a lot for the next time I need to do something like this :)
+
+<Image style={"margin-left: auto; margin-right: auto; max-width: 250px;"} alt={"A top down view of a hex tile with a building and a couple of trees, with a wooden frame loom outside the front."} src={buildingWeaver} />
+
+&nbsp;
+
+My biggest slowdowns in Blender have all just been knowing where things are. I fully expect to get a lot faster with time, and depending on if I feel like I hit a plateau somewhere, I'll take a detour and do some tutorials to learn things a bit more "properly". But my current haphazard picking up of things as I need them is working alright for me at the moment at least!
+
+### New buildings and currencies
+
+I built out some upgrade paths a little bit with some new buildings, including some that produce the new currency I added this month: fabric!
+
+### Showing info everywhere
+
+The unlocked cell popup has been completely overhauled, and now has a ton of information on it. All buildings show the default production rates for the selected building, plus more specific info depending on the kind of building it is. For example, if it's a workplace, this popup now shows the effects provided to any relevant buildings around it, and any effects received from surrounding buildings as well. Also you can assign and unassign workers from this popup as well, in the same way that you can from the overall workplaces popup - much more convenient for one-off worker assignments! 
+
+I also added an encyclopedia popup - basically a list of all available buildings and what they do. I added this because in order to make progression desirable, you need to know that progression exists! So I thought that I should prioritise showing buildings that you have yet to unlock - and as a nice visual touch, I also wrote a very quick greyscale shader that I'm using to show which buildings are locked.
+
+### Tool improvements again
+
+As I was introducing more building upgrade paths, I thought it would be useful to be able to visualise them. So now I can! It was very straightforward to add this into the existing placement tool I made, and it's made things much faster.
+
+I also added a shortcut to be able to jump to the focussed view of a tile that's in the upgrade tree. A small but very convenient upgrade!
+
+<Image style={"margin-left: auto; margin-right: auto;"} alt={"A screenshot of the Godot game engine, showing a selection list on the left and a diagram on the right linking a box with details about the house tile to a box for the tent tile, and then three more links from the tent tile to the grass, dirt and forest tiles."} src={placementTree} />
+
+### Worker counts mean something now
+
+Until this point, having more than one worker at a workplace had no effect on anything. This is still the case, but I've now laid the groundwork for allowing production rates and adjacency effects to change based on worker count.
+
+Adjacency effects are now based on the number of workers in neighbouring workplaces, rather than the number of adjacent workplaces overall. Building production[^1] is a bit more complex, and not yet implemented - the idea is to have a baseline production at a workplace for one worker, and then an increase for each subsequent worker. I'm also considering a double increase for the last worker to make maxxing out a workplace feel extra fun, though that might be a bit overpowered - I'll have to try it and see!
+
+### Godot Updates!
+
+I moved to Godot 4.6 beta 1 for the native Wayland game embedding! No more blurry engine fonts! And the new theme is just icing on the cake - the dark grey is so much nicer on the eyes.
+
+Obviously being on a beta version comes with a few bumps in the road - e.g. turning on a specific setting in the font import window seems to break my theme at the moment, still narrowing down the full cause for a bug report at the moment - but it's SO worth it. I'll likely keep on the latest beta version until 4.6 comes out properly.
+
+<Image style={"margin-left: auto; margin-right: auto;"} alt={"A diagonally split comparison between Godot 4.5 (blue) and 4.6 (dark grey)."} src={godotBeforeAfter} />
+
+## What's next?
+
+My main focus from a design perspective will be adding some gentle pressure to pursue the progression that I'm building out. Currently it's pretty easy to find a balance where all your resources are increasing, and there's not a whole lot of reasons to expand the map and build more if that's where you are. So changes must be made!
+
+### Storage
+
+Firstly I'm thinking of limiting storage based on buildings, which will mean players are incentivised to keep expanding the map so they can build capacity to hold enough resources for building higher-level buildings. There are already some buildings that I have implemented that could do with more purpose, like the lumber pile. Also, adding storage to buildings like houses gives me more parameters that I can use for upgrades, without scaling up resource production really fast.
+
+### Resident Happiness
+
+The other way I'm considering adding pressure is to add a happiness score, continuing the theme of focussing on residents as motivation. I'm thinking that each resident should have an individual happiness level, influenced by...well, I'm not sure yet. Here are some ideas I've had so far:
+- Neighbouring buildings to their residence can provide happiness
+- After a certain number of turns, happiness drops if their residence isn't above specific level
+- Residents make timed requests for the player to build specific buildings or produce a certain number of resources, and happiness drops if a request isn't fulfilled
+- If a resident is at minimum happiness, their housemates and colleagues' happiness starts decreasing as well
+- Depending on the number of total tiles unlocked (or some other similar measure of player progression), residents require specific buildings built to remain happy
+
+I'm still not sure if I'll implement any of these, but at the very least I'll be thinking about it. Watch this space!
+
+### Anything else?
+
+- Improving progression some more! Continuing to add more buildings, particularly improved versions of existing buildings rather than just new buildings.
+
+- Making even more information visible: in particular, unlock requirements for future buildings need to be in the encyclopedia.
+
+
+---
+
+[^1]: _note: this only applies to buildings with workers! Other buildings' non-adjacency-bonus production is just flat_

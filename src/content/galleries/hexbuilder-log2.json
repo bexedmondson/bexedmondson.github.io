@@ -1,0 +1,28 @@
+{
+    "images": [
+        {
+            "src": "@images/hexbuilder-log2/map.png",
+            "alt": "A screenshot of a hexagonal grid on a grey background, with several types of tiles unlocked: forest, grass, river, sand, and dirt, with some buildings and UI over the top. The outermost tiles are greyed out.",
+            "title": "Hex Map as of dev log #2",
+            "description": ""
+        },
+        {
+            "src": "@images/hexbuilder-log2/unlockedpopup.png",
+            "alt": "A popup showing details of a smelter, with one worker in it called Bilip. The popup also says that the mine to the north east is adding an extra 1 stone production.",
+            "title": "Unlocked Popup improvements",
+            "description": ""
+        },
+        {
+            "src": "@images/hexbuilder-log2/encyclopedia.png",
+            "alt": "A popup showing details of the mill building tile, where mill is selected in a list on the left. It says that a mill by default produces +2 food, and an adjacent field will provide an extra +2 per worker. The mill icon is greyscale, because it's not unlocked yet.",
+            "title": "Encyclopedia",
+            "description": ""
+        },
+        {
+            "src": "@images/hexbuilder-log2/newbuildings.png",
+            "alt": "A screenshot of a hexagonal grid on a grey background, showing a pit mine, a large sailboat, an orchard, a weaver, and a flax field.",
+            "title": "Some of the new buildings in action",
+            "description": "Clockwise from the left-most: orchard, pit mine, weaver, flax field, and sail boat."
+        }
+    ]
+}
