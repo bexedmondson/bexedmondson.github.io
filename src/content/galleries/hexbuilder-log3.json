@@ -1,0 +1,10 @@
+{
+    "images": [
+        {
+            "src": "@images/hexbuilder-log3/map.png",
+            "alt": "A screenshot of a hexagonal grid on a grey background, with several types of tiles unlocked: forest, grass, river, sand, and dirt, with some buildings and UI over the top. The outermost tiles are greyed out.",
+            "title": "Hex Map as of dev log #3",
+            "description": ""
+        }
+    ]
+}

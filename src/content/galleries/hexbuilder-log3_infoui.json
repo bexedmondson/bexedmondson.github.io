@@ -1,0 +1,34 @@
+{
+    "images": [
+        {
+            "src": "@images/hexbuilder-log3/unlockedpopup.png",
+            "alt": "A popup showing details of a mill, showing that it will produce 2 food by default. The popup also says that the fields to the north and north east are each adding an extra 1 food production.",
+            "title": "Unlocked popup improvements",
+            "description": "Reworked this popup again, to make it more flexible when adding new information."
+        },
+        {
+            "src": "@images/hexbuilder-log3/unlockedpopupbuildtab.png",
+            "alt": "A popup showing that a cabin, granary and mine can be built on this tile. Each option has a build cost, icon, and green info button on it.",
+            "title": "Build tab improvements",
+            "description": "The green i icon opens the encyclopedia to that tile's info page"
+        },
+        {
+            "src": "@images/hexbuilder-log3/capacityindicators.png",
+            "alt": "Four resource icons with quantities and capacities next to them. Full storage (i.e. with text like 20/20 next to the icon) is indicated with a small bag icon with a no entry symbol over it.",
+            "title": "Full storage indicators",
+            "description": ""
+        },
+        {
+            "src": "@images/hexbuilder-log3/encyclopedia.png",
+            "alt": "The encyclopedia popup open to the smelter page. There is one foldout visible on the right details panel, showing that adjacent mines will provide 1 bonus stone production.",
+            "title": "Encyclopedia foldouts",
+            "description": "Foldouts are new in Godot 4.5, and they make a nice way to allow players to see what they want to see without overwhelming them with too much info on display at first glance."
+        },
+        {
+            "src": "@images/hexbuilder-log3/unlockrequirements.png",
+            "alt": "The encyclopedia popup open to the large rowboat page. There is three foldouts visible on the right details panel, and one is expanded to show that to unlock this building the player needs to build more rowboats and gather more food (the latter is checked off).",
+            "title": "Unlock requirements UI",
+            "description": "Unlock requirements are now nicely visualised in the encyclopedia - before this it was impossible to know how to unlock a building so this was very needed!"
+        }
+    ]
+}
