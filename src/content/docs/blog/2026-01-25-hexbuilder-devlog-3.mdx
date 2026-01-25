@@ -1,0 +1,108 @@
+---
+title: "Hexbuilder: Devlog #3"
+author: "Bex Edmondson"
+date: 2026-01-25
+draft: false
+tags: [ godot, personal project ]
+tableOfContents: { maxHeadingLevel: 6 }
+excerpt: "New year, big changes!"
+---
+
+import Pandabox from '../../../../src/components/Pandabox.astro';
+import { ClientRouter } from "astro:transitions";
+import { Image } from 'astro:assets';
+import buildingStockpile from './building-stockpile.png';
+import residentNeeds from './resident-needs.png';
+import adjacencyEffect from './adjacency-effect.gif';
+import toast from './toast.gif';
+import maxWorkerBonus from './max-worker-bonus.gif';
+
+<ClientRouter />
+
+Catch up on the Hexbuilder progress starting [here!](../2025-11-09-hexbuilder-devlog-0)
+
+## Announcement
+
+I'm happy (and slightly scared) to publicly commit to releasing Hexbuilder this year! I'm more excited about this project then I have been about any other, and I think have the ability, capacity and resources to get it there. I'm not sure of the specifics of how yet, but saying I'm going to is the first step. So: I'm going to!
+
+Now that's out there, on to what's changed since my last update...
+
+## Screenshots
+
+<Pandabox galleryid="hexbuilder-log3" transitionType="fade" />
+
+## Updates
+
+In my last post, I talked about adding storage and continuing to improve information accessibility, and that I was considering adding a concept of resident happiness. I have updates on all three of those, plus more!
+
+### Storage
+
+We have storage! Resource quantities are now capped, with caps increasing based on which buildings are present in your town. This has added a lot of needed complexity to the game and provides good motivation for players to build more. Also, due to the added restrictions I've been able to delineate very early gameplay decisions that will teach players the basics.
+
+<Image style={"margin-left: auto; margin-right: auto; max-width: 60%;"} alt={"A top down view of a hex tile with some boxes, crates and barrels stacked in a pile."} src={buildingStockpile} />
+
+And I added a couple of new buildings to fit the theme, like this stockpile!
+
+### Information accessibility
+
+I spent a lot of time improving which information was displayed and where before my last post, but there was still a lot left to do! I've added a lot and improved a lot of existing visuals, and refactored things to simplify implementing UI as I go in the future.
+
+<Pandabox galleryid="hexbuilder-log3_infoui" transitionType="fade" />
+
+#### Adjacency effects
+
+Adjacency effect visuals got a big visual improvement with this fancy effect:
+
+<Image style={"margin-left: auto; margin-right: auto; max-width: 90%;"} alt={"A top down view of two hex tiles showing a mine and a smelter. A little green stone icon animates quickly from the mine to the smelter."} src={adjacencyEffect} />
+
+It took about 3 days to get working right, but I'm really pleased with the result!
+
+#### Toasts
+
+A new notification system that lets the player know all sorts of information! I originally used the [Toast Party](https://github.com/godot-journey-adventures/toastparty) plugin, but it wasn't as flexible as I needed and was written in GDScript, so I ported it over to C#. And then completely refactored it about three times! I ended up with something really clean and flexible - I even used this system to display a currency change animation[^1].
+
+<Image style={"margin-left: auto; margin-right: auto; max-width: 60%;"} alt={"A blue box containing the words \"new resident: Jimberley\" transitions down into view, pauses for a second, and then fades out."} src={toast} />
+
+### Resident happiness
+
+Easily the biggest gameplay change since last time: residents gained sentience! Now each one can have a range of happiness values, affected by a number of different needs.
+
+Needs get assigned under specific conditions and have a list of satisfaction requirements. These are communicated in the reworked residents popup, and provide a sort of rudimentary tutorial or achievement system - a bit like wants in The Sims.
+
+<Image style={"margin-left: auto; margin-right: auto; max-width: 80%;"} alt={"A popup showing details of two residents. The resident listed first, Jonstance, has a sad icon next to their name and a speech bubble under that which says \"we need to build more tents!\""} src={residentNeeds} />
+
+Resident needs don't currently have much of a direct gameplay impact yet, though that should be very straightforward to change if I think it's needed. Changes in happiness do get communicated to the player through the new [[#Toasts|toast system]] though so they're quite front-and-center for motivation purposes. There's a lot I want to do from here to add depth to this system, so this will be something I work on soon.
+
+## Big changes
+
+I got a whole lot done other than following up on what I mentioned last time! Here are the three biggest headlines:
+
+### Worker counts have more meaning, part 2
+
+Worker counts gained a purpose in my last post, and in this one I added something small but powerful - maxxing out worker capacity at a building can now provide a production bonus, indicated by this nice little shine effect:
+
+<Image style={"margin-left: auto; margin-right: auto; max-width: 60%;"} alt={"A top down view of a hex tile with a cow field, with UI indicating 2 of 2 workers are assigned. The numbers and worker icon have a white diagonal shine that transitions across them every second or so."} src={maxWorkerBonus} />
+
+And I added this feature to buildings using...✨components✨!
+
+### Componentising building data
+
+A huge overhaul of how building data is stored! I used a pattern that I'm very familiar with from previous work, and broke each data chunk into its own class which inherits from `AbstractTileDataComponent`. Each `CustomTileData` instance then has just one array of abstract components, and at runtime these are mapped into a dictionary with the component type as the key. There are some minor limitations around component type inheritance, but overall I'm way happier with this system. It's much, much more flexible and readable, and makes adding new types of building data very easy.
+
+### Locked cell visuals
+
+I figured out how to grey out individual cells using alternate tiles, so the ugly hexagonal overlay is now gone!
+
+<Pandabox galleryid="hexbuilder-log3_locked" transitionType="fade" />
+
+## What's next?
+
+- Making the map more dynamic by adding map interactions, e.g. clearing forest tiles, growing grass
+- Adding more resident needs and building adjacency effects
+- Adding more buildings
+- Solidifying the order in which different resources show up in early game
+- Adding adjacency requirements to new buildings, e.g. ensuring a smelter must be built next to a mine
+
+---
+
+[^1]: _Admittedly, this is kind of a hack. But it works!_

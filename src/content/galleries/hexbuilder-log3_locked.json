@@ -1,0 +1,16 @@
+{
+    "images": [
+        {
+            "src": "@images/hexbuilder-log3/before.png",
+            "alt": "A screenshot of a hexagonal tile, with a hexagonal grey overlay on top. The tile is of a forest and the trees stick out above the overlay, making the tops look oddly highlighted.",
+            "title": "before",
+            "description": ""
+        },
+        {
+            "src": "@images/hexbuilder-log3/after.png",
+            "alt": "A screenshot of a hexagonal tile of a forest, where the whole tile image is darkened perfectly uniformly.",
+            "title": "before",
+            "description": ""
+        }
+    ]
+}
