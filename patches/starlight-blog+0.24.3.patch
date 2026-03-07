@@ -1,0 +1,303 @@
+diff --git a/node_modules/starlight-blog/components/PostTags.astro b/node_modules/starlight-blog/components/PostTags.astro
+index 8696050..d654043 100644
+--- a/node_modules/starlight-blog/components/PostTags.astro
++++ b/node_modules/starlight-blog/components/PostTags.astro
+@@ -1,7 +1,7 @@
+ ---
+ import type { StarlightBlogEntry } from '../libs/content'
+ import type { Locale } from '../libs/i18n'
+-import { getRelativeBlogUrl } from '../libs/page'
++import { getRelativeUrl } from '../libs/page'
+ import { getEntryTags } from '../libs/tags'
+ 
+ interface Props {
+@@ -21,7 +21,7 @@ const tags = getEntryTags(entry)
+       <ul>
+         {tags.map((tag) => (
+           <li>
+-            <a href={getRelativeBlogUrl(`/tags/${tag.slug}`, locale)}>{tag.label}</a>
++              <a href={getRelativeUrl(`/tags/${tag.slug}`, locale)}>{tag.label}</a>
+           </li>
+         ))}
+       </ul>
+diff --git a/node_modules/starlight-blog/components/TagList.astro b/node_modules/starlight-blog/components/TagList.astro
+new file mode 100644
+index 0000000..9d0fc0b
+--- /dev/null
++++ b/node_modules/starlight-blog/components/TagList.astro
+@@ -0,0 +1,34 @@
++import LinkCard from '@astrojs/starlight/components'
++import type { Locale } from '../libs/i18n'
++import {getAllTags} from '../libs/tags'
++import {getPathWithLocale, getRelativeUrl, isBlogTagPage} from '../libs/page'
++
++interface Props {
++    entries: StarlightBlogEntry[]
++    locale: Locale
++}
++
++const { entries, locale } = Astro.props
++
++const tags = await getAllTags(locale)
++---
++
++<div class="posts">
++    {console.log(tags)}
++    { tags.prototype.forEach((tagKey, tagValue, tagMap) => (
++            <LinkCard title={tagKey} href={
++                getRelativeUrl(
++                    getPathWithLocale(`/tags/${tagKey}`, locale),
++                    false
++                )} />
++        ))
++    }
++</div>
++
++<style>
++    .posts {
++        display: flex;
++        flex-direction: column;
++        gap: 3rem;
++    }
++</style>
+\ No newline at end of file
+diff --git a/node_modules/starlight-blog/libs/config.ts b/node_modules/starlight-blog/libs/config.ts
+index 401cfcd..90baff7 100644
+--- a/node_modules/starlight-blog/libs/config.ts
++++ b/node_modules/starlight-blog/libs/config.ts
+@@ -47,7 +47,7 @@ const configSchema = z
+      *
+      * @default 'header-end'
+      */
+-    navigation: z.union([z.literal('header-start'), z.literal('header-end'), z.literal('none')]).default('header-end'),
++    navigation: z.union([z.literal('header-start'), z.literal('header-end'), z.literal('sidebar'), z.literal('none')]).default('header-end'),
+     /**
+      * The base prefix for all blog routes.
+      *
+diff --git a/node_modules/starlight-blog/libs/navigation.ts b/node_modules/starlight-blog/libs/navigation.ts
+index 2fbbecc..02b9f26 100644
+--- a/node_modules/starlight-blog/libs/navigation.ts
++++ b/node_modules/starlight-blog/libs/navigation.ts
+@@ -3,7 +3,7 @@ import type { StarlightUserConfig } from '@astrojs/starlight/types'
+ import type { StarlightBlogConfig } from './config'
+ 
+ export function isNavigationWithSidebarLink(config: StarlightBlogConfig) {
+-  return config.navigation === 'header-start' || config.navigation === 'header-end'
++  return config.navigation === 'sidebar'
+ }
+ 
+ export function isNavigationWithCustomCss(config: StarlightBlogConfig) {
+diff --git a/node_modules/starlight-blog/libs/tags.ts b/node_modules/starlight-blog/libs/tags.ts
+index 21f8ccf..10e829b 100644
+--- a/node_modules/starlight-blog/libs/tags.ts
++++ b/node_modules/starlight-blog/libs/tags.ts
+@@ -60,7 +60,7 @@ export function getEntryTags(entry: StarlightBlogEntry): StarlightBlogEntryTag[]
+ function getTagsStaticPath(entries: StarlightBlogEntry[], slug: string, label: string, locale: Locale) {
+   return {
+     params: {
+-      prefix: getPathWithLocale(config.prefix, locale),
++      prefix: getPathWithLocale('', locale),
+       tag: slug,
+     },
+     props: {
+diff --git a/node_modules/starlight-blog/middleware.ts b/node_modules/starlight-blog/middleware.ts
+index 72e6bc2..c19bf5c 100644
+--- a/node_modules/starlight-blog/middleware.ts
++++ b/node_modules/starlight-blog/middleware.ts
+@@ -31,18 +31,7 @@ export const onRequest = defineRouteMiddleware(async (context) => {
+ 
+   context.locals.starlightBlog = await getBlogData(starlightRoute, context.locals.t)
+ 
+-  const isBlog = isAnyBlogPage(id)
+-
+-  if (!isBlog) {
+-    if (isNavigationWithSidebarLink(config)) {
+-      starlightRoute.sidebar.unshift(
+-        makeSidebarLink(getBlogTitle(locale), getRelativeBlogUrl('/', locale), false, { class: 'sl-blog-mobile-link' }),
+-      )
+-    }
+-    return
+-  }
+-
+-  starlightRoute.sidebar = await getBlogSidebar(context)
++  await getBlogSidebar(context)
+ })
+ 
+ export async function getBlogData({ locale }: StarlightRouteData, t: App.Locals['t']): Promise<StarlightBlogData> {
+@@ -93,7 +82,7 @@ async function getBlogPostsData(locale: Locale, t: App.Locals['t']): Promise<Sta
+         metrics,
+         tags: tags.map(({ label, slug }) => ({
+           label,
+-          href: getRelativeBlogUrl(`/tags/${slug}`, locale),
++          href: getRelativeUrl(`/tags/${slug}`, locale),
+         })),
+         title: entry.data.title,
+       }
+@@ -108,76 +97,91 @@ async function getBlogPostsData(locale: Locale, t: App.Locals['t']): Promise<Sta
+ }
+ 
+ async function getBlogSidebar(context: APIContext): Promise<StarlightRouteData['sidebar']> {
+-  const { starlightRoute, t } = context.locals
+-  const { id, locale } = starlightRoute
+-
+-  const { featured, recent } = await getSidebarBlogEntries(locale)
++  const {starlightRoute, t} = context.locals
++  const {id, locale} = starlightRoute
++  const {featured, recent} = await getSidebarBlogEntries(locale)
++  const blogSidebarEntries = []
+   
+-  const sidebar: StarlightRouteData['sidebar'] = [
+-    makeSidebarLink(t('starlightBlog.sidebar.all'), getRelativeBlogUrl('/', locale), isBlogRoot(id)),
+-  ]
++  blogSidebarEntries.push(makeSidebarLink(t('starlightBlog.sidebar.all'), getRelativeBlogUrl('/', locale, true), isBlogRoot(id)))
+   
+   if (featured.length > 0) {
+-    sidebar.push(makeSidebarGroup(t('starlightBlog.sidebar.featured'), getSidebarProps(id, featured, locale)))
++    blogSidebarEntries.push(makeSidebarGroup(t('starlightBlog.sidebar.featured'), getSidebarProps(id, featured, locale)))
+   }
+   
+-  sidebar.push(makeSidebarGroup(t('starlightBlog.sidebar.recent'), getSidebarProps(id, recent, locale)))
++  blogSidebarEntries.push(makeSidebarGroup(t('starlightBlog.sidebar.recent'), getSidebarProps(id, recent, locale)))
+   
+-  const tags = await getAllTags(locale)
++  const authors = await getAllAuthors(locale)
++  
++  if (authors.size > 1) {
++    blogSidebarEntries.push(
++        makeSidebarGroup(
++            t('starlightBlog.sidebar.authors'),
++            [...authors]
++                .sort(([, a], [, b]) => {
++                  if (a.entries.length === b.entries.length) {
++                    return a.author.name.localeCompare(b.author.name)
++                  }
++                  return b.entries.length - a.entries.length
++                })
++                .map(([, {author, entries}]) =>
++                    makeSidebarLink(
++                        `${author.name} (${entries.length})`,
++                        getRelativeBlogUrl(`/authors/${author.slug}`, locale),
++                        isBlogAuthorPage(id, author.slug),
++                    ),
++                ),
++        ),
++    )
++  }
+   
++  if (context.site) {
++    blogSidebarEntries.push(makeSidebarLink(t('starlightBlog.sidebar.rss'), getRelativeBlogUrl('/rss.xml', locale, true), false))
++  }
++  
++  starlightRoute.sidebar.splice(starlightRoute.sidebar.length - 2, 0, makeSidebarGroup('blog', blogSidebarEntries))
++  
++  const tags = await getAllTags(locale)
+   if (tags.size > 0) {
+-    sidebar.push(
+-      makeSidebarGroup(
+-        t('starlightBlog.sidebar.tags'),
+-        [...tags]
+-          .sort(([, a], [, b]) => {
+-            if (a.entries.length === b.entries.length) {
+-              return a.label.localeCompare(b.label)
+-            }
+-
+-            return b.entries.length - a.entries.length
+-          })
+-          .map(([tagSlug, { entries, label }]) =>
+-            makeSidebarLink(
+-              `${label} (${entries.length})`,
+-              getRelativeBlogUrl(`/tags/${tagSlug}`, locale),
+-              isBlogTagPage(id, tagSlug),
++    let tagEntries = [...tags].sort(
++        ([, a], [, b]) => {
++          if (a.entries.length === b.entries.length) {
++            return a.label.localeCompare(b.label)
++          }
++          return b.entries.length - a.entries.length
++        }
++    ).map(([tagSlug, {entries, label}]) =>
++        makeSidebarLink(
++            `${label} (${entries.length})`,
++            getRelativeUrl(
++                getPathWithLocale(`/tags/${tagSlug}`, locale),
++                false
+             ),
+-          ),
+-      ),
++            isBlogTagPage(id, tagSlug),
++        )
+     )
+-  }
+ 
+-  const authors = await getAllAuthors(locale)
++    if (tagEntries.length > 5)
++      tagEntries = tagEntries.slice(0, 5)
+ 
+-  if (authors.size > 1) {
+-    sidebar.push(
+-      makeSidebarGroup(
+-        t('starlightBlog.sidebar.authors'),
+-        [...authors]
+-          .sort(([, a], [, b]) => {
+-            if (a.entries.length === b.entries.length) {
+-              return a.author.name.localeCompare(b.author.name)
+-            }
+-
+-            return b.entries.length - a.entries.length
+-          })
+-          .map(([, { author, entries }]) =>
+-            makeSidebarLink(
+-              `${author.name} (${entries.length})`,
+-              getRelativeBlogUrl(`/authors/${author.slug}`, locale),
+-              isBlogAuthorPage(id, author.slug),
++    tagEntries.unshift(
++        makeSidebarLink('All Tags',
++            getRelativeUrl(
++                getPathWithLocale(`/tags`, locale),
++                true
+             ),
+-          ),
+-      ),
++            false
++        )
+     )
+-  }
+     
+-  if (context.site) {
+-    sidebar.push(makeSidebarLink(t('starlightBlog.sidebar.rss'), getRelativeBlogUrl('/rss.xml', locale, true), false))
++    starlightRoute.sidebar.splice(starlightRoute.sidebar.length - 2, 0,
++        makeSidebarGroup(
++            t('starlightBlog.sidebar.tags'),
++            tagEntries
++        ),
++    )
+   }
+   
+-  return sidebar
++  return starlightRoute.sidebar
+ }
+ 
+ function makeSidebarLink(
+diff --git a/node_modules/starlight-blog/translations.ts b/node_modules/starlight-blog/translations.ts
+index 1804ef8..d67e8a3 100644
+--- a/node_modules/starlight-blog/translations.ts
++++ b/node_modules/starlight-blog/translations.ts
+@@ -12,12 +12,12 @@ export const Translations = {
+       ' - Last update: <time datetime="{{isoDate}}">{{date, datetime(dateStyle: medium)}}</time>',
+     'starlightBlog.post.draft': 'Draft',
+     'starlightBlog.post.featured': 'Featured', 
+-    'starlightBlog.post.tags': 'Tags:',
+-    'starlightBlog.sidebar.all': 'All posts',
+-    'starlightBlog.sidebar.featured': 'Featured posts',
+-    'starlightBlog.sidebar.recent': 'Recent posts',
+-    'starlightBlog.sidebar.tags': 'Tags',
+-    'starlightBlog.sidebar.authors': 'Authors',
++    'starlightBlog.post.tags': 'tags:',
++    'starlightBlog.sidebar.all': 'All Posts',
++    'starlightBlog.sidebar.featured': 'featured posts',
++    'starlightBlog.sidebar.recent': 'recent posts',
++    'starlightBlog.sidebar.tags': 'tags',
++    'starlightBlog.sidebar.authors': 'authors',
+     'starlightBlog.sidebar.rss': 'RSS',
+     'starlightBlog.tags.count_one': '{{count}} post with the tag “{{tag}}”',
+     'starlightBlog.tags.count_other': '{{count}} posts with the tag “{{tag}}”',
