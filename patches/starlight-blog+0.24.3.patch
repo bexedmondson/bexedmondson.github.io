@@ -20,6 +20,67 @@ index 8696050..d654043 100644
            </li>
          ))}
        </ul>
+diff --git a/node_modules/starlight-blog/components/Preview.astro b/node_modules/starlight-blog/components/Preview.astro
+index 7b2a7e1..de95b58 100644
+--- a/node_modules/starlight-blog/components/Preview.astro
++++ b/node_modules/starlight-blog/components/Preview.astro
+@@ -17,25 +17,45 @@ const { entry, locale } = Astro.props
+ ---
+ 
+ <article class="preview">
+-  <header>
+-    <h2>
+-      <a href={getRelativeUrl(`/${getPathWithLocale(entry.id, locale)}`)}>{entry.data.title}</a>
+-    </h2>
++  <div class="preview-left">
++    <header>
++      <h2>
++        <a href={getRelativeUrl(`/${getPathWithLocale(entry.id, locale)}`)}>{entry.data.title}</a>
++      </h2>
++      <Metadata entry={entry} {locale} />
++    </header>
++    <div class="sl-markdown-content">
++      <Excerpt {entry} />
++    </div>
++    <footer>
++      <PostTags {entry} {locale} />
++    </footer>
++  </div>
++  <div class="preview-right">
+     {entry.data.cover && <Cover cover={entry.data.cover} />}
+-    <Metadata entry={entry} {locale} />
+-  </header>
+-  <div class="sl-markdown-content">
+-    <Excerpt {entry} />
+   </div>
+-  <footer>
+-    <PostTags {entry} {locale} />
+-  </footer>
+ </article>
+ 
+ <style>
+   .preview {
++    display: flex;
++    gap: 1.5rem;
++  }
++
++  .preview-left {
++    display: flex;
++    flex-direction: column;
++    flex-grow: 1;
++    width: 50%;
++    gap: 1.5rem;
++  }
++
++  .preview-right {
+     display: flex;
+     flex-direction: column;
++    width: 50%;
++    height: 100%;
++    object-fit: cover;
+     gap: 1.5rem;
+   }
+ 
 diff --git a/node_modules/starlight-blog/components/TagList.astro b/node_modules/starlight-blog/components/TagList.astro
 new file mode 100644
 index 0000000..9d0fc0b
