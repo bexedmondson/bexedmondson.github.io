@@ -8,15 +8,18 @@ interface Props {
     galleryid: string;
     gallery?: CollectionEntry<"galleries">;
     transitionType?: string;
+    size?: string;
 }
 
-const { galleryid, transitionType } = Astro.props;
+var { galleryid, transitionType, size } = Astro.props;
+if (size === undefined)
+    size = "big";
 const gallery = await getEntry("galleries", galleryid);
 const images = gallery?.data.images ?? [];
 // Change image width for thumbnails as required
 ---
 
-<section class="thumbnail-container gallery" id={"gallery-" + galleryid}>
+<section class={`thumbnail-container gallery ${size}`} id={"gallery-" + galleryid}>
     {
         images.map((image, index) => (
                 <button
@@ -155,9 +158,16 @@ const images = gallery?.data.images ?? [];
         overflow: hidden;
     }
     /* Thumbnails and container, change as required */
-    .thumbnail-container {
+    .thumbnail-container.big {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+        gap: clamp(1rem, 2vw, 1.5rem);
+        max-width: 90vw;
+        overflow: clip;
+    }
+    .thumbnail-container.small {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
         gap: clamp(1rem, 2vw, 1.5rem);
         max-width: 90vw;
         overflow: clip;

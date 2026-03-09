@@ -1,0 +1,34 @@
+{
+    "images": [
+        {
+            "src": "@images/hexbuilder-log4/building-cow.png",
+            "alt": "A grassy hex tile with a single low poly cow on it",
+            "title": "cow",
+            "description": ""
+        },
+        {
+            "src": "@images/hexbuilder-log4/building-cowshed.png",
+            "alt": "A grassy hex tile with a single low poly cow on it with a shed",
+            "title": "cowshed",
+            "description": ""
+        },
+        {
+            "src": "@images/hexbuilder-log4/building-cow_calf.png",
+            "alt": "A grassy hex tile with a low poly cow on it, a shed, and a smaller and significantly cuter cow in the middle",
+            "title": "cow.. and a calf!",
+            "description": ""
+        },
+        {
+            "src": "@images/hexbuilder-log4/building-cows_2.png",
+            "alt": "A grassy hex tile with a two low poly cows on it, and a shed",
+            "title": "adult cows",
+            "description": ""
+        },
+        {
+            "src": "@images/hexbuilder-log4/building-cows_2_and_calf.png",
+            "alt": "A grassy hex tile with a two low poly cows on it, a shed, and another smaller and significantly cuter cow in the middle",
+            "title": "cow family",
+            "description": ""
+        }
+    ]
+}
