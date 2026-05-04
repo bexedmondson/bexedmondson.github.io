@@ -11,4 +11,4 @@ tags: [ project, personal project ]
 
 A project I published to add functional buttons to a Google Sheet, so that my partner can fill in the sheet more easily and share the same functionality in the same sheet with others.
 
-[!appscript.png]
+![appscript.png](appscript.png)
