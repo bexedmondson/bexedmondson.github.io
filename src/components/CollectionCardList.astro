@@ -10,7 +10,7 @@ const posts = await getCollection(collectionName);
 
 <CardGrid stagger={shouldStagger}>
 	{
-        posts.sort((a,b) => b.id.localeCompare(a.id)).map((post) => {
+        posts.sort((a,b) => b.id.slice(b.id.indexOf('/') + 1).localeCompare(a.id.slice(a.id.indexOf('/') + 1))).map((post) => {
             let image = post.data.image;
             if (image === undefined)
                 image = post.data.hero.image.file;
