@@ -12,15 +12,18 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.4.1",
-    "@astrojs/starlight": "^0.34.3",
-    "@catppuccin/starlight": "^1.0.1",
-    "@expressive-code/plugin-line-numbers": "^0.41.3",
+    "@astrojs/starlight": "^0.41.7",
+    "@catppuccin/starlight": "^2.1.0",
+    "@expressive-code/plugin-line-numbers": "^0.44.1",
     "@fontsource/enriqueta": "^5.2.6",
-    "@lucide/astro": "^0.547.0",
-    "astro": "^5.6.1",
+    "@lucide/astro": "^1.31.0",
+    "astro": "^7.2.0",
     "patch-package": "^8.0.0",
-    "sharp": "^0.32.5",
-    "starlight-blog": "^0.24.0",
+    "sharp": "^0.35.3",
+    "starlight-blog": "^0.28.0",
     "starlight-fullview-mode": "^0.2.3"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true
   }
 }
