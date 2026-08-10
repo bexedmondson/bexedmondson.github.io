@@ -23,7 +23,18 @@ export default defineConfig({
         },
         favicon: '/light-mode-favicon.png', //TODO figure this out
         tableOfContents: false,
-        social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/bexedmondson' }],
+        social: [
+            { 
+                icon: 'github', 
+                label: 'GitHub', 
+                href: 'https://github.com/bexedmondson' 
+            },
+            { 
+                icon: 'twitch', 
+                label: 'Twitch', 
+                href: 'https://www.twitch.tv/thebexgames' 
+            }
+        ],
         sidebar: [
             {
                 label: 'games',
