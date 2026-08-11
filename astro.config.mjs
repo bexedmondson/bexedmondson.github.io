@@ -38,11 +38,11 @@ export default defineConfig({
         sidebar: [
             {
                 label: 'games',
-                autogenerate: { directory: 'games' }
+                items: [{ autogenerate: { "directory": "games" } }]
             },
             {
                 label: 'other projects',
-                autogenerate: { directory: 'projects' }
+                items: [{ autogenerate: { "directory": "projects" } }]
             },
             {
                 label: 'about',
