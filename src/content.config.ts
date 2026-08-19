@@ -5,12 +5,6 @@ import { glob } from 'astro/loaders';
 import { blogSchema } from 'starlight-blog/schema';
 
 export const collections = {
-	docs: defineCollection({ 
-		loader: docsLoader(),
-		schema: docsSchema({
-			extend: (context) => blogSchema(context)
-		}) 
-	}),
     games: defineCollection({
         loader: glob({ pattern: "games/*.md", base: "./src/content/docs" }),
         schema: docsSchema()
@@ -21,6 +15,10 @@ export const collections = {
     }),
     portfolio: defineCollection({
         loader: glob({ pattern: "(games|projects)/*.md", base: "./src/content/docs" }),
+        schema: docsSchema()
+    }),
+    blog: defineCollection({
+        loader: glob({ pattern: "blog/*.md", base: "./src/content/docs" }),
         schema: docsSchema()
     }),
     galleries: defineCollection({

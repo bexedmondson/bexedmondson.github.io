@@ -61,10 +61,6 @@ export default defineConfig({
             starlightFullViewMode({ 
                 leftSidebarEnabled: false,  
                 rightSidebarEnabled: true,
-            }),
-            starlightBlog({
-                navigation: 'sidebar',
-                prevNextLinksOrder: 'chronological'
             })
         ],
         components: {
