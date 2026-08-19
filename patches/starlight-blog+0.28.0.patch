@@ -1,7 +1,16 @@
 diff --git a/node_modules/starlight-blog/components/Metadata.astro b/node_modules/starlight-blog/components/Metadata.astro
-index d0e1da7..cf0f8af 100644
+index d0e1da7..5334e31 100644
 --- a/node_modules/starlight-blog/components/Metadata.astro
 +++ b/node_modules/starlight-blog/components/Metadata.astro
+@@ -22,7 +22,7 @@ const hasAuthors = authors.length > 0
+ 
+ let metrics: Metrics | undefined
+ 
+-if (config.metrics.readingTime !== false || config.metrics.words !== false) {
++if (config !== undefined && config.metrics != undefined && (config.metrics.readingTime !== false || config.metrics.words !== false)) {
+   const html = await renderBlogEntryToString(entry, Astro.locals.t)
+   metrics = getMetrics(html, Astro.currentLocale, entry.data.metrics)
+ }
 @@ -47,14 +47,14 @@ if (config.metrics.readingTime !== false || config.metrics.words !== false) {
        ) : null
      }
@@ -20,7 +29,7 @@ index d0e1da7..cf0f8af 100644
            {Astro.locals.t('starlightBlog.metrics.words', {
              count: config.metrics.words === 'total' ? metrics.words.total : metrics.words.rounded,
 diff --git a/node_modules/starlight-blog/components/PostTags.astro b/node_modules/starlight-blog/components/PostTags.astro
-index 4b31304..6874b25 100644
+index 4b31304..cbf7444 100644
 --- a/node_modules/starlight-blog/components/PostTags.astro
 +++ b/node_modules/starlight-blog/components/PostTags.astro
 @@ -2,7 +2,7 @@
@@ -37,7 +46,7 @@ index 4b31304..6874b25 100644
          {tags.map((tag) => (
            <li>
 -            <a href={getRelativeBlogUrl(config, `/tags/${tag.slug}`, locale)}>{tag.label}</a>
-+            <a href={getRelativeUrl(config, `/tags/${tag.slug}`, locale)}>{tag.label}</a>
++            <a href={getRelativeUrl(entry.id, `/tags/${tag.slug}`, locale)}>{tag.label}</a>
            </li>
          ))}
        </ul>
@@ -151,13 +160,17 @@ index 0000000..1838a9a
 +</style>
 \ No newline at end of file
 diff --git a/node_modules/starlight-blog/index.ts b/node_modules/starlight-blog/index.ts
-index 23d2d09..aaf0ace 100644
+index 23d2d09..040a398 100644
 --- a/node_modules/starlight-blog/index.ts
 +++ b/node_modules/starlight-blog/index.ts
-@@ -97,18 +97,6 @@ export default function starlightBlogPlugin(userConfig?: StarlightBlogUserConfig
-                 prerender: true,
-               })
- 
+@@ -93,19 +93,7 @@ export default function starlightBlogPlugin(userConfig?: StarlightBlogUserConfig
+             'astro:config:setup': ({ injectRoute, updateConfig }) => {
+               injectRoute({
+                 entrypoint: 'starlight-blog/routes/Tags.astro',
+-                pattern: '/[...prefix]/tags/[tag]',
+-                prerender: true,
+-              })
+-
 -              injectRoute({
 -                entrypoint: 'starlight-blog/routes/Authors.astro',
 -                pattern: '/[...prefix]/authors/[author]',
@@ -167,12 +180,10 @@ index 23d2d09..aaf0ace 100644
 -              injectRoute({
 -                entrypoint: 'starlight-blog/routes/Blog.astro',
 -                pattern: '/[...prefix]/[...page]',
--                prerender: true,
--              })
--
-               if (rssLinks.length > 0) {
-                 injectRoute({
-                   entrypoint: 'starlight-blog/routes/rss',
++                pattern: '/tags/[tag]',
+                 prerender: true,
+               })
+ 
 diff --git a/node_modules/starlight-blog/libs/authors.ts b/node_modules/starlight-blog/libs/authors.ts
 index 87266b8..5c40042 100644
 --- a/node_modules/starlight-blog/libs/authors.ts
@@ -221,6 +232,31 @@ index 2fbbecc..02b9f26 100644
  }
  
  export function isNavigationWithCustomCss(config: StarlightBlogConfig) {
+diff --git a/node_modules/starlight-blog/libs/page.ts b/node_modules/starlight-blog/libs/page.ts
+index 098cd52..d339327 100644
+--- a/node_modules/starlight-blog/libs/page.ts
++++ b/node_modules/starlight-blog/libs/page.ts
+@@ -54,7 +54,7 @@ export function getRelativeBlogUrl(
+ }
+ 
+ /** Get the relative URL of a page taking into account the base URL and the trailing slash configuration. */
+-export function getRelativeUrl(path: string, ignoreTrailingSlash = false) {
++export function getRelativeUrl(path, ignoreTrailingSlash = false) {
+   path = stripLeadingSlash(path)
+   path = path ? `${base}/${path}` : `${base}/`
+ 
+diff --git a/node_modules/starlight-blog/libs/path.ts b/node_modules/starlight-blog/libs/path.ts
+index 9bbe86c..eb440ff 100644
+--- a/node_modules/starlight-blog/libs/path.ts
++++ b/node_modules/starlight-blog/libs/path.ts
+@@ -1,4 +1,6 @@
+-export function stripLeadingSlash(path: string) {
++export function stripLeadingSlash(path) {
++  console.log(path)
++  console.log(typeof path)
+   if (!path.startsWith('/')) {
+     return path
+   }
 diff --git a/node_modules/starlight-blog/libs/rss.ts b/node_modules/starlight-blog/libs/rss.ts
 index e054963..18a232d 100644
 --- a/node_modules/starlight-blog/libs/rss.ts
@@ -249,6 +285,29 @@ index f7c958a..5689062 100644
        tag: slug,
      },
      props: {
+diff --git a/node_modules/starlight-blog/middleware.ts b/node_modules/starlight-blog/middleware.ts
+index 2ccc911..28c703f 100644
+--- a/node_modules/starlight-blog/middleware.ts
++++ b/node_modules/starlight-blog/middleware.ts
+@@ -125,7 +125,8 @@ async function getBlogPostsData(
+       const tags = getEntryTags(entry)
+       const html = await renderBlogEntryToString(entry, t)
+       const metrics = getMetrics(html, locale, entry.data.metrics)
+-
++      console.log("GET BLOG POSTS DATA")
++      console.log(config)
+       const postsData: StarlightBlogData['posts'][number] = {
+         authors: authors.map(({ name, title, url }) => ({
+           name,
+@@ -141,7 +142,7 @@ async function getBlogPostsData(
+         metrics,
+         tags: tags.map(({ label, slug }) => ({
+           label,
+-          href: getRelativeBlogUrl(config, `/tags/${slug}`, locale),
++          href: getRelativeUrl(`/${getPathWithLocale(entry.id, locale)}`, `/tags/${slug}`, locale),
+         })),
+         title: entry.data.title,
+       }
 diff --git a/node_modules/starlight-blog/translations.ts b/node_modules/starlight-blog/translations.ts
 index 1804ef8..7b198e5 100644
 --- a/node_modules/starlight-blog/translations.ts
