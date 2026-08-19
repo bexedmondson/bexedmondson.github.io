@@ -51,6 +51,7 @@ My to-do list with this project, as of October 2025:
 - [x]  Refactoring the algorithm more than I already have, to make the calculation a lot more optimal
 - [ ]  Adding a mode where you can find the optimal station to meet without having to provide a list of possible end stations
 - [x]  Showing the route each person would need to take
-- [ ]  Adding line changeover time into the calculations
-- [ ]  Showing alternative meeting points and associated routes
+- [x]  Adding line changeover time into the calculations
+- [x]  Showing alternative meeting points and associated routes
+- [ ]  Showing which stations have step-free access
 - [ ]  And more...
